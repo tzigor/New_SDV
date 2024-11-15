@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="SDV.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="40" Y="34"/>
+        <UsageCount Value="208"/>
+      </Unit>
+      <Unit>
+        <Filename Value="main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="App"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Main"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="959"/>
+        <CursorPos X="79" Y="968"/>
+        <UsageCount Value="208"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="usertypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UserTypes"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="65"/>
+        <CursorPos X="55" Y="107"/>
+        <UsageCount Value="207"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="utils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Utils"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="19"/>
+        <CursorPos X="31" Y="37"/>
+        <UsageCount Value="207"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tffobjects.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TffObjects"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="83"/>
+        <CursorPos Y="99"/>
+        <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="parsebindb.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ParseBinDb"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="263"/>
+        <CursorPos Y="280"/>
+        <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="channelsform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ShowChannelForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="117"/>
+        <CursorPos X="116" Y="122"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="lineserieutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LineSerieUtils"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="345"/>
+        <CursorPos X="30" Y="368"/>
+        <UsageCount Value="211"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="chartutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ChartUtils"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="106"/>
+        <CursorPos X="161" Y="118"/>
+        <UsageCount Value="211"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="paramoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ParamOptionsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ParamOptions"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="107"/>
+        <CursorPos X="6" Y="144"/>
+        <UsageCount Value="202"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="limitsform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="LimitForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="LimitsForm"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="3" Y="49"/>
+        <UsageCount Value="266"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="sibrparam.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SIBRParam"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="22"/>
+        <CursorPos X="25" Y="133"/>
+        <UsageCount Value="410"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="horlineoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="HorLineForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="HorLineOptions"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="53"/>
+        <CursorPos X="6" Y="73"/>
+        <UsageCount Value="382"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="parameterset.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ParamSetFrm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ParameterSet"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="41"/>
+        <CursorPos X="23" Y="164"/>
+        <UsageCount Value="209"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="parsecsv.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ParseCSV"/>
+        <EditorIndex Value="15"/>
+        <TopLine Value="12"/>
+        <CursorPos Y="130"/>
+        <UsageCount Value="209"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="chartoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ChartOptionsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ChartOptions"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="42" Y="124"/>
+        <UsageCount Value="486"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1755"/>
+        <CursorPos X="86" Y="1826"/>
+        <UsageCount Value="39"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\tatools.pas"/>
+        <UnitName Value="TATools"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="430"/>
+        <CursorPos X="14" Y="443"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <Debugger>
+      <Backend Value="IDE"/>
+    </Debugger>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="243" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="292" TopLine="276"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="299" TopLine="276"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="300" TopLine="276"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="305" TopLine="279"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="266" TopLine="250"/>
+      </Position>
+      <Position>
+        <Filename Value="utils.pas"/>
+        <Caret Line="109" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="utils.pas"/>
+        <Caret Line="106" Column="39" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="294" Column="73" TopLine="283"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="297" Column="210" TopLine="164"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="266" Column="72" TopLine="252"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="270" Column="42" TopLine="260"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="313" TopLine="261"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="322" Column="65" TopLine="296"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="277" TopLine="271"/>
+      </Position>
+      <Position>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="279" Column="37" TopLine="271"/>
+      </Position>
+      <Position>
+        <Filename Value="chartutils.pas"/>
+        <Caret Line="15" Column="146"/>
+      </Position>
+      <Position>
+        <Filename Value="chartutils.pas"/>
+        <Caret Line="49" Column="98" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="8" Column="53"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="678" Column="34" TopLine="667"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="679" Column="39" TopLine="667"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="291" Column="89" TopLine="283"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="301" Column="90" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="692" Column="105" TopLine="386"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="778" Column="3" TopLine="775"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="717" Column="11" TopLine="703"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="704" Column="11" TopLine="703"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="787" Column="41" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="648" Column="71" TopLine="635"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="962" Column="3" TopLine="959"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
