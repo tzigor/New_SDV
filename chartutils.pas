@@ -48,6 +48,7 @@ procedure ChartDefaultSettings(Chart: TChart);
 function GetLogarithmTransform(ChartNubmber: Byte): TLogarithmAxisTransform;
 procedure ChartsDisableRedrawing();
 procedure ChartsEnableRedrawing();
+procedure ChartsLegend(show: Boolean);
 
 implementation
 uses Main, LineSerieUtils, channelsform;
@@ -672,6 +673,14 @@ procedure ChartsEnableRedrawing();
 var i: Integer;
 begin
   for i:=1 to MAX_CHART_NUMBER do GetChart(i).EnableRedrawing;
+end;
+
+procedure ChartsLegend(show: Boolean);
+var i: Integer;
+begin
+  for i:=1 to MAX_CHART_NUMBER do
+    if show then GetChart(i).Legend.Visible:= True
+    else GetChart(i).Legend.Visible:= False;
 end;
 
 end.

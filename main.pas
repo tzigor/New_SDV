@@ -20,6 +20,7 @@ type
 
   TApp = class(TForm)
     AllocateArea: TDataPointDistanceTool;
+    Calculator: TImage;
     catUser1LogarithmAxisTransform1: TLogarithmAxisTransform;
     catUser2: TChartAxisTransformations;
     catUser2LogarithmAxisTransform1: TLogarithmAxisTransform;
@@ -35,6 +36,8 @@ type
     catUser7LogarithmAxisTransform1: TLogarithmAxisTransform;
     catUser8: TChartAxisTransformations;
     catUser8LogarithmAxisTransform1: TLogarithmAxisTransform;
+    ShowLegendSw: TCheckBox;
+    CloseCharts: TImage;
     ColorsSync: TCheckBox;
     CutZoneOff: TImage;
     CutZoneOn: TImage;
@@ -49,7 +52,6 @@ type
     GroupBox1: TGroupBox;
     GroupBox5: TGroupBox;
     ChartOptionsItem: TMenuItem;
-    Calculator: TImage;
     IniPropStorage1: TIniPropStorage;
     Label2: TLabel;
     Label3: TLabel;
@@ -147,7 +149,6 @@ type
     FitY: TImage;
     FitX: TImage;
     FitXY: TImage;
-    CloseCharts: TImage;
     Label1: TLabel;
     MenuItem5: TMenuItem;
     ScreenShotFlash: TImage;
@@ -261,6 +262,7 @@ type
     procedure ScreenShotClick(Sender: TObject);
     procedure ShowLabelClick(Sender: TObject);
     procedure OpenFileClick(Sender: TObject);
+    procedure ShowLegendSwChange(Sender: TObject);
     procedure StartChartsFromChange(Sender: TObject);
     procedure TimerStopTimer(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -740,6 +742,12 @@ end;
 procedure TApp.OpenFileClick(Sender: TObject);
 begin
   Bin_DbToBin_Db();
+end;
+
+procedure TApp.ShowLegendSwChange(Sender: TObject);
+begin
+  if ShowLegendSw.Checked then ChartsLegend(True)
+  else ChartsLegend(False);
 end;
 
 procedure TApp.StartChartsFromChange(Sender: TObject);
