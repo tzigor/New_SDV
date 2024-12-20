@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, UserTypes, TASeries, TAGraph, Controls, TATypes, LCLType,
-  TAChartUtils, DateUtils, StrUtils, Forms, Dialogs, Utils, SIBRParam, uComplex,
-  Math, ExtCtrls, Graphics, TAChartAxis, TACustomSource, ChartOptions,
+  TAChartUtils, DateUtils, StrUtils, Forms, Dialogs, SIBRParam, uComplex,
+  Math, ExtCtrls, Graphics, TAChartAxis, TACustomSource,
   TATransformations;
 
 procedure DrawSerie(LineSerie: TLineSeries; SelectedSource, SelectedParam: Word; Name: String);
@@ -51,7 +51,7 @@ procedure ChartsEnableRedrawing();
 procedure ChartsLegend(show: Boolean);
 
 implementation
-uses Main, LineSerieUtils, channelsform;
+uses Main, LineSerieUtils, channelsform, ChartOptions, Utils;
 
 function GetChannelValue(DataChannels: TTFFDataChannels; Frame: TFrameRecord; Channel: Word; var Value: Double): Boolean;
 var Offset : Word;
@@ -284,18 +284,35 @@ end;
 
 procedure ChartDefaultSettings(Chart: TChart);
 begin
-  Chart.AxisList[0].Intervals.Count:= 5;
-  Chart.AxisList[0].Intervals.MinLength:= 10;
-  Chart.AxisList[0].Intervals.MaxLength:= 50;
-  Chart.AxisList[0].Intervals.Options:= [aipUseMaxLength, aipUseMinLength, aipUseNiceSteps];
-  //Chart.AxisList[0].Marks.AtDataOnly:= True;
-  Chart.AxisList[0].Marks.AtDataOnly:= False;
-  Chart.AxisList[0].Range.Min:= 0;
-  Chart.AxisList[0].Range.Max:= 0;
-  Chart.AxisList[0].Range.UseMin:= False;
-  Chart.AxisList[0].Range.UseMax:= False;
-  Chart.AxisList[0].Inverted:= False;
-  GetLogarithmTransform(GetChartNumber(Chart.Name)).Enabled:= False;
+   Chart.Frame.Color:= RGBToColor(100, 100, 100);
+   Chart.BackColor:= App.GChartBGColor.Selected;
+
+   Chart.Margins.Top:= 10;
+   Chart.Margins.Bottom:= 10;
+   Chart.Margins.Left:= 10;
+   Chart.Margins.Right:= 10;
+   Chart.MarginsExternal.Bottom:= 1;
+   Chart.MarginsExternal.Top:= 0;
+   Chart.BorderSpacing.Top:= 4;
+   Chart.Legend.Visible:= True;
+   Chart.Legend.Frame.Color:= clSilver;
+   Chart.Legend.UseSidebar:= False;
+   Chart.AxisList[1].Marks.Visible:= False;
+   Chart.Foot.Visible:= False;
+
+   Chart.AxisList[0].Marks.AtDataOnly:= False;
+   Chart.AxisList[0].LabelSize:= 80;
+   Chart.AxisList[0].Intervals.Count:= 5;
+   Chart.AxisList[0].Intervals.MinLength:= 10;
+   Chart.AxisList[0].Intervals.MaxLength:= 50;
+   Chart.AxisList[0].Intervals.Options:= [aipUseMaxLength, aipUseMinLength, aipUseNiceSteps];
+   Chart.AxisList[0].Range.Min:= 0;
+   Chart.AxisList[0].Range.Max:= 0;
+   Chart.AxisList[0].Range.UseMin:= False;
+   Chart.AxisList[0].Range.UseMax:= False;
+   Chart.AxisList[0].Inverted:= False;
+
+   GetLogarithmTransform(GetChartNumber(Chart.Name)).Enabled:= False;
 end;
 
 function GetSplitter(SplitterNubmber: Byte): TSplitter;

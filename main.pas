@@ -12,7 +12,8 @@ uses
   TAChartUtils, TADataTools, TAChartCombos, ParamOptions, DateUtils, JSONParser,
   JSONScanner, fpJSON, FileUtil, LCLIntf, Clipbrd, TAChartAxisUtils, TALegend,
   TATransformations, TAStyles, laz.VirtualTrees, LimitsForm, HorLineOptions,
-  LCLTranslator, IniPropStorage, ChartOptions, TACustomSource, Math, Process;
+  LCLTranslator, IniPropStorage, Spin, ChartOptions, TACustomSource,
+  LogicChannels, Math, Process, Navigation, TATypes;
 
 type
 
@@ -20,6 +21,8 @@ type
 
   TApp = class(TForm)
     AllocateArea: TDataPointDistanceTool;
+    AnalyzeBtn: TButton;
+    FindPacketBtn: TButton;
     Calculator: TImage;
     catUser1LogarithmAxisTransform1: TLogarithmAxisTransform;
     catUser2: TChartAxisTransformations;
@@ -36,6 +39,11 @@ type
     catUser7LogarithmAxisTransform1: TLogarithmAxisTransform;
     catUser8: TChartAxisTransformations;
     catUser8LogarithmAxisTransform1: TLogarithmAxisTransform;
+    SizeLbl: TLabel;
+    LogicTolerance: TFloatSpinEdit;
+    ToleranceLbl: TLabel;
+    LogicAnalyzerCh: TCheckBox;
+    NavigatorCh: TCheckBox;
     ShowLegendSw: TCheckBox;
     CloseCharts: TImage;
     ColorsSync: TCheckBox;
@@ -95,6 +103,7 @@ type
     RemoveLabelsBtn: TImage;
     SaveDialog1: TSaveDialog;
     ShowBackInTime: TCheckBox;
+    PointerSize: TSpinEdit;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
     Splitter3: TSplitter;
@@ -181,6 +190,8 @@ type
     procedure AddVerticalLineClick(Sender: TObject);
     procedure AllocateAreaAfterMouseUp(ATool: TChartTool; APoint: TPoint);
     procedure AllocateAreaMeasure(ASender: TDataPointDistanceTool);
+    procedure AnalyzeBtnClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
     procedure Chart1AxisList0GetMarkText(Sender: TObject; var AText: String;
       AMark: Double);
     procedure Chart1BeforeDrawBackWall(ASender: TChart; ACanvas: TCanvas;
@@ -190,6 +201,13 @@ type
     procedure Chart1DragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure Chart1DragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
+    procedure Chart2Click(Sender: TObject);
+    procedure Chart3Click(Sender: TObject);
+    procedure Chart4Click(Sender: TObject);
+    procedure Chart5Click(Sender: TObject);
+    procedure Chart6Click(Sender: TObject);
+    procedure Chart7Click(Sender: TObject);
+    procedure Chart8Click(Sender: TObject);
     procedure ChartDownClick(Sender: TObject);
     procedure ChartLinkChange(Sender: TObject);
     procedure ChartOptionsItemClick(Sender: TObject);
@@ -210,7 +228,13 @@ type
       APoint: TPoint);
     procedure ChartToolset1PanDragTool1AfterMouseUp(ATool: TChartTool;
       APoint: TPoint);
+    procedure ChartToolset1UserDefinedTool1AfterKeyDown(ATool: TChartTool;
+      APoint: TPoint);
     procedure ChartToolset1UserDefinedTool1AfterMouseDown(ATool: TChartTool;
+      APoint: TPoint);
+    procedure ChartToolset1UserDefinedTool2AfterKeyDown(ATool: TChartTool;
+      APoint: TPoint);
+    procedure ChartToolset1UserDefinedTool2AfterMouseDown(ATool: TChartTool;
       APoint: TPoint);
     procedure ChartToolset1ZoomMouseWheelTool3AfterMouseMove(ATool: TChartTool;
       APoint: TPoint);
@@ -232,6 +256,7 @@ type
     procedure DistanceXOffClick(Sender: TObject);
     procedure DistanceYOffClick(Sender: TObject);
     procedure EndPointChange(Sender: TObject);
+    procedure FindPacketBtnClick(Sender: TObject);
     procedure FitXClick(Sender: TObject);
     procedure FitXYClick(Sender: TObject);
     procedure FitYClick(Sender: TObject);
@@ -250,13 +275,16 @@ type
     procedure CalculatorClick(Sender: TObject);
     procedure KeepDistanceChange(Sender: TObject);
     procedure LimitsItemClick(Sender: TObject);
+    procedure LogicAnalyzerChChange(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure MoveToTopClick(Sender: TObject);
+    procedure NavigatorChChange(Sender: TObject);
     procedure PanOffClick(Sender: TObject);
+    procedure PointerSizeChange(Sender: TObject);
     procedure RemoveLabelsBtnClick(Sender: TObject);
     procedure SaveToJPEGClick(Sender: TObject);
     procedure ScreenShotClick(Sender: TObject);
@@ -279,6 +307,14 @@ var
   CommandPromptProcessed : Boolean = False;
 
   wCurveStyle        : TCurveStyle; { temporary serie line & pointer style }
+
+  LogicAnalyzerMode    : Boolean = False;
+  LogicAnalyzed        : Boolean = False;
+  LogicAnalyzerSerie   : TLineSeries;
+  UpperLevelSerieClock : TConstantLine;
+  UpperLevelSerieData  : TConstantLine;
+  LowerLevelSerieClock : TConstantLine;
+  LowerLevelSerieData  : TConstantLine;
 
   ErrorCode          : Byte;
   CurrentOpenedFile  : String;
@@ -349,6 +385,8 @@ var
   procedure OpenChannelForm();
   procedure PrepareChannelForm();
   procedure FillChannelList();
+  procedure FillLogicChannelList();
+  function Bin_DbToBin_Db(): Boolean;
 
 implementation
 
@@ -387,26 +425,13 @@ begin
     end;
 
   for i:= 1 to MAX_CHART_NUMBER do begin
-     Chart:= GetChart(i);
-     Chart.AxisList[0].Marks.AtDataOnly:= False;
-     Chart.Frame.Color:= RGBToColor(100, 100, 100);
-     Chart.BackColor:= GChartBGColor.Selected;
-     Chart.Margins.Top:= 10;
-     Chart.Margins.Bottom:= 10;
-     Chart.Margins.Left:= 10;
-     Chart.Margins.Right:= 10;
-     Chart.MarginsExternal.Bottom:= 1;
-     Chart.MarginsExternal.Top:= 0;
-     Chart.BorderSpacing.Top:= 4;
-     Chart.Legend.Visible:= True;
-     Chart.Legend.Frame.Color:= clSilver;
-     Chart.Legend.UseSidebar:= False;
-     Chart.AxisList[1].Marks.Visible:= False;
-     Chart.Foot.Visible:= False;
+
+     ChartDefaultSettings(GetChart(i));
+
      Splitter:= GetSplitter(i);
      Splitter.ResizeStyle:= rsLine;
      Splitter.Height:= 4;
-     //Splitter.Visible:= False;
+     Splitter.Visible:= False;
   end;
   DateTimeIntervalChartSource1.DateTimeFormat:='hh:mm:ss'+#13#10+'DD.MM.YY';
 
@@ -432,6 +457,7 @@ begin
   else DistanceTool.Options:= [];
 
   AllowDropFiles:= True;
+
 end;
 
 procedure TApp.FormActivate(Sender: TObject);
@@ -549,9 +575,59 @@ end;
 procedure TApp.LimitsItemClick(Sender: TObject);
 begin
   LimitForm.Parameter.Caption:= OnHintSerie.Title;
+
   LimitForm.Minimum.Value:= OnHintSerie.GetYMin;
   LimitForm.Maximum.Value:= OnHintSerie.GetYMax;
+
   LimitForm.Show;
+end;
+
+procedure TApp.LogicAnalyzerChChange(Sender: TObject);
+var res: Integer;
+begin
+  if LogicAnalyzerCh.Checked then LogicAnalyzerMode:= True
+  else LogicAnalyzerMode:= False;
+  setLength(DataSources, 0);
+  CurrentSource:= 0;
+  SourceCount:= 0;
+  CloseChartsClick(Sender);
+  if LogicAnalyzerMode then begin
+    ShowChannelForm.Hide;
+    ToleranceLbl.Visible:= True;
+    SizeLbl.Visible:= True;
+    LogicTolerance.Visible:= True;
+    PointerSize.Visible:= True;
+    AnalyzeBtn.Visible:= True;
+    if Bin_DbToBin_Db() then begin
+      res:= DrawChart('Data', -1, True, False);
+      res:= DrawChart('Clock', -1, True, False);
+      res:= DrawChart('Bit sequence', -1, True, False);
+      HorLineCount:= 4;
+    end
+    else LogicAnalyzerCh.Checked:= False;
+  end
+  else begin
+    ChartDefaultSettings(GetChart(3));
+
+    if LogicAnalyzed then begin
+      LogicAnalyzerSerie.Clear;
+      LogicAnalyzerSerie.ShowLines := True;
+      LogicAnalyzerSerie.Pointer.Style := App.GPointerStyleBox.PointerStyle;
+      LogicAnalyzerSerie.Pointer.VertSize:= App.GPointSizeBox.ItemIndex + 2;
+      LogicAnalyzerSerie.Pointer.HorizSize:= App.GPointSizeBox.ItemIndex + 2;
+      LogicAnalyzerSerie.Pointer.Pen.Color:= clBlack;
+    end;
+
+    ToleranceLbl.Visible:= False;
+    SizeLbl.Visible:= False;
+    LogicTolerance.Visible:= False;
+    PointerSize.Visible:= False;
+    AnalyzeBtn.Visible:= False;
+
+    LogicAnalyzed:= False;
+
+    LogicChannelForm.Hide;
+  end;
 end;
 
 procedure TApp.ShowLabelClick(Sender: TObject);
@@ -651,10 +727,22 @@ begin
   MoveToTop.Enabled:= False;
 end;
 
+procedure TApp.NavigatorChChange(Sender: TObject);
+begin
+  if NavigatorCh.Checked then NavigationForm.Show
+  else NavigationForm.Hide;
+end;
+
 procedure TApp.PanOffClick(Sender: TObject);
 begin
   NavigationMode:= PAN_MODE;
   SetNavigation(NavigationMode);
+end;
+
+procedure TApp.PointerSizeChange(Sender: TObject);
+begin
+  LogicAnalyzerSerie.Pointer.VertSize:= PointerSize.Value;
+  LogicAnalyzerSerie.Pointer.HorizSize:= PointerSize.Value;
 end;
 
 procedure TApp.RemoveLabelsBtnClick(Sender: TObject);
@@ -695,12 +783,25 @@ begin
      ShowChannelForm.Splitter1.Visible:= True;
   end
   else begin
-     ShowChannelForm.ChannelList.Width:= ShowChannelForm.Width - 16;
+     ShowChannelForm.ChannelList.Width:= ShowChannelForm.Width - 26;
      ShowChannelForm.SIBRParamList.Visible:= False;
      ShowChannelForm.SIBRParamLbl.Visible:= False;
      ShowChannelForm.Splitter1.Visible:= False;
   end;
   ShowChannelForm.ChannelList.Repaint;
+end;
+
+procedure FillLogicChannelList();
+var i : Integer;
+begin
+  SourceCount:= 1;
+  CurrentSource:= SourceCount - 1;
+  LogicChannelForm.LogicChannelList.Clear;
+  for i:=0 to Length(DataSources[CurrentSource].TFFDataChannels) - 1 do begin
+    LogicChannelForm.LogicChannelList.Items.Add(DataSources[CurrentSource].TFFDataChannels[i].DLIS);
+  end;
+  LogicChannelForm.LogicChannelList.Repaint;
+  //LogicChannelForm.LogicChannelList.ItemIndex:= 0;
 end;
 
 procedure PrepareChannelForm();
@@ -713,7 +814,6 @@ begin
   end;
   FillChannelList();
   ShowChannelForm.FileList.ItemIndex:= CurrentSource;
-  //ShowChannelForm.ChannelList.ItemIndex:=0;
 end;
 
 procedure OpenChannelForm();
@@ -722,25 +822,23 @@ begin
   ShowChannelForm.Show;
 end;
 
-procedure Bin_DbToBin_Db();
-var wStr: String;
+function Bin_DbToBin_Db(): Boolean;
 begin
-  App.OpenDialog.Filter:= 'bin files|*.bin_db;*.csv|all files|*.*|';
+  App.OpenDialog.Filter:= 'Curve files|*.bin_db;*.csv|all files|*.*|';
   App.OpenDialog.DefaultExt:= '.bin_db|.csv';
   if App.OpenDialog.Execute then begin
     CurrentOpenedFile:= App.OpenDialog.FileName;
     if UpperCase(ExtractFileExt(CurrentOpenedFile)) = '.BIN_DB' then
        if LoadSourceByteArray(CurrentOpenedFile, 100) then LoadFile(BIN_DB_TYPE);
     if UpperCase(ExtractFileExt(CurrentOpenedFile)) = '.CSV' then LoadFile(CSV_TYPE);
-  end;
-
-  //if LoadSourceFile('bin_db', 100) then begin
-  //   LoadFile(BIN_DB_TYPE);
-  //end;
+    result:= True;
+  end
+  else result:= False;
 end;
 
 procedure TApp.OpenFileClick(Sender: TObject);
 begin
+  App.LogicAnalyzerCh.Checked:= False;
   Bin_DbToBin_Db();
 end;
 
@@ -796,7 +894,7 @@ begin
   DateTimeLine.Visible:= False;
   MenuItem4.Enabled:= False;
   ChartLink.Checked:= True;
-  OpenChannelForm();
+  if SourceCount > 0 then OpenChannelForm();
 end;
 
 procedure TApp.ColorsSyncChange(Sender: TObject);
@@ -1089,11 +1187,30 @@ begin
   DateTimeLine.Repaint;
 end;
 
+procedure TApp.ChartToolset1UserDefinedTool1AfterKeyDown(ATool: TChartTool;
+  APoint: TPoint);
+begin
+
+end;
+
 procedure TApp.ChartToolset1UserDefinedTool1AfterMouseDown(ATool: TChartTool;
   APoint: TPoint);
 begin
   SelectedChart:= GetChartNumber(ATool.Chart.Name);
+  NavigationForm.ChartNavPanel1.Chart:= ATool.Chart;
   PopupMenu1.PopUp;
+end;
+
+procedure TApp.ChartToolset1UserDefinedTool2AfterKeyDown(ATool: TChartTool;
+  APoint: TPoint);
+begin
+
+end;
+
+procedure TApp.ChartToolset1UserDefinedTool2AfterMouseDown(ATool: TChartTool;
+  APoint: TPoint);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= ATool.Chart;
 end;
 
 procedure TApp.ChartToolset1ZoomMouseWheelTool3AfterMouseMove(
@@ -1198,6 +1315,69 @@ begin
   if Source = ShowChannelForm.SIBRParamList then Accept:= True;
 end;
 
+procedure TApp.Chart2Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart2;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart3Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart3;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart4Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart4;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart5Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart5;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart6Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart6;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart7Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart7;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
+procedure TApp.Chart8Click(Sender: TObject);
+begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart8;
+  if DrawCutAreaBG then begin
+    DrawCutAreaBG:= False;
+    RepaintAll();
+  end;
+end;
+
 procedure TApp.Chart1DragDrop(Sender, Source: TObject; X, Y: Integer);
 var Chart             : TChart;
     Serie             : Byte;
@@ -1232,7 +1412,10 @@ end;
 procedure TApp.AddChartClick(Sender: TObject);
 begin
   if SourceCount > 0 then OpenChannelForm()
-  else Bin_DbToBin_Db();
+  else begin
+    App.LogicAnalyzerCh.Checked:= False;
+    Bin_DbToBin_Db();
+  end;
 end;
 
 procedure TApp.AddHorizontalLineClick(Sender: TObject);
@@ -1262,6 +1445,48 @@ begin
   StartCutPoint:= ASender.PointStart.AxisPos();
   EndCutPoint:= ASender.PointEnd.AxisPos();
   DrawCutAreaBG:= True;
+end;
+
+procedure TApp.AnalyzeBtnClick(Sender: TObject);
+var ClockSerie, DataSerie : TLineSeries;
+    i     : LongInt;
+begin
+  ClockSerie:= GetLineSerie(2, 1);
+  DataSerie:= GetLineSerie(1, 1);
+  if ClockSerie.Count > 0 then begin
+     if Not LogicAnalyzed then LogicAnalyzerSerie:= GetLineSerie(3, 1);
+     LogicAnalyzerSerie.BeginUpdate;
+     LogicAnalyzerSerie.Clear;
+     LogicAnalyzerSerie.ShowLines := False;
+     Chart3.Margins.Top:= (Chart3.Height Div 2);
+     Chart3.Margins.Bottom:= (Chart3.Height Div 2);
+     Chart3.AxisList[0].Marks.AtDataOnly:= True;
+     LogicAnalyzerSerie.Pointer.Style := psRectangle;
+     LogicAnalyzerSerie.Pointer.VertSize:= 5;
+     LogicAnalyzerSerie.Pointer.HorizSize:= 5;
+     LogicAnalyzerSerie.Pointer.Pen.Color:= clSilver;
+     i:= 0;
+     repeat
+       while (ClockSerie.YValue[i] >= UpperLevelSerieClock.Position) And (i < ClockSerie.Count - 1) do Inc(i);
+       while (ClockSerie.YValue[i] < UpperLevelSerieClock.Position) And (i < ClockSerie.Count - 1) do Inc(i);
+       if ClockSerie.YValue[i] >= UpperLevelSerieClock.Position then begin
+          if DataSerie.YValue[i] >= UpperLevelSerieData.Position then LogicAnalyzerSerie.AddXY(ClockSerie.XValue[i], 1, '1', RGBToColor(255, 50, 50))
+          else LogicAnalyzerSerie.AddXY(ClockSerie.XValue[i], 0, '0', RGBToColor(50, 50, 255))
+       end;
+       Inc(i);
+     until i = ClockSerie.Count;
+     StartDateTime:= LogicAnalyzerSerie.MinXValue;
+     EndDateTime:= LogicAnalyzerSerie.MaxXValue;
+     ChartsCurrentExtent:= App.DateTimeLine.CurrentExtent;
+     LogicAnalyzerSerie.EndUpdate;
+     FindTimeRange();
+     LogicAnalyzed:= True;
+  end;
+end;
+
+procedure TApp.Button1Click(Sender: TObject);
+begin
+
 end;
 
 //procedure TApp.Button1Click(Sender: TObject);
@@ -1332,6 +1557,7 @@ end;
 
 procedure TApp.Chart1Click(Sender: TObject);
 begin
+  NavigationForm.ChartNavPanel1.Chart:= Chart1;
   if DrawCutAreaBG then begin
     DrawCutAreaBG:= False;
     RepaintAll();
@@ -1380,6 +1606,62 @@ begin
   RemoveEmptyCharts();
   FindTimeRange();
   SetNavigation(NavigationMode);
+end;
+
+var Offset : LongInt = 0;
+
+procedure ColorSequence(n: Byte; color: TColor);
+var i: Byte;
+begin
+  if Offset < LogicAnalyzerSerie.Count - 1 then begin
+    for i:=1 to n do begin
+      LogicAnalyzerSerie.SetColor(Offset, color);
+      Inc(Offset);
+      if Offset = LogicAnalyzerSerie.Count - 1 then Exit;
+    end;
+  end;
+end;
+
+function FindSequence(seq: Byte): Boolean;
+var currentByte : Byte = 0;
+begin
+  if Offset < LogicAnalyzerSerie.Count - 1 then begin
+    Result:= False;
+    repeat
+      currentByte:= currentByte shl 1;
+      if LogicAnalyzerSerie.YValue[Offset] = 1 then currentByte:= currentByte Or 1;
+      Inc(Offset);
+      if currentByte = seq then begin
+        Result:= True;
+        Exit;
+      end;
+    until Offset >= LogicAnalyzerSerie.Count - 1;
+  end;
+end;
+
+procedure TApp.FindPacketBtnClick(Sender: TObject);
+var i: LongInt;
+begin
+  Offset:= 0;
+  repeat
+    if FindSequence($96) then begin
+      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+      ColorSequence(3, RGBToColor(255, 255, 0)); // dev addr
+      ColorSequence(6, RGBToColor(255, 0, 255)); // reg addr
+      ColorSequence(1, RGBToColor(0, 255, 0));   // command
+      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+    end;
+    if FindSequence($69) then begin
+      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+      ColorSequence(32, RGBToColor(255, 0, 0)); // data
+      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+      ColorSequence(1, RGBToColor(255, 255, 255)); // CRC
+    end;
+    if FindSequence($69) then begin
+      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+    end;
+  until Offset >= LogicAnalyzerSerie.Count - 1;
 end;
 
 procedure TApp.FitXClick(Sender: TObject);

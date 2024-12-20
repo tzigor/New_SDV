@@ -64,6 +64,8 @@ type
 
   end;
 
+  function DrawChart(SelectedParamName: String; ItemIndex: Integer; NewChart, SIBRParam: Boolean): Integer;
+
 var
   ShowChannelForm: TShowChannelForm;
 
@@ -128,7 +130,7 @@ begin
     if Not SIBRParam then begin
       ParametersUnits[CurrentChart, CurrentSerie]:= DataSources[CurrentSource].TFFDataChannels[ItemIndex].Units;
     end;
-    DrawSerie(GetLineSerie(CurrentChart, CurrentSerie), CurrentSource, ItemIndex, SelectedParamName);
+    if ItemIndex > -1 then DrawSerie(GetLineSerie(CurrentChart, CurrentSerie), CurrentSource, ItemIndex, SelectedParamName);
     Chart.Visible:= True;
     GetSplitter(GetChartNumber(Chart.Name)).Visible:= True;
     ChartsPosition();

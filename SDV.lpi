@@ -159,6 +159,21 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ChartOptions"/>
       </Unit>
+      <Unit>
+        <Filename Value="navigation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="NavigationForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Navigation"/>
+      </Unit>
+      <Unit>
+        <Filename Value="logicchannels.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="LogicChannelForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="LogicChannels"/>
+      </Unit>
     </Units>
     <Debugger>
       <ClassConfig Version="1">

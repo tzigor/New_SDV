@@ -1,47 +1,47 @@
 object ShowChannelForm: TShowChannelForm
-  Left = 2547
-  Height = 706
-  Top = -549
-  Width = 388
+  Left = 4957
+  Height = 1059
+  Top = -989
+  Width = 580
   BorderIcons = [biSystemMenu, biMaximize]
-  BorderStyle = bsSingle
   Caption = 'Channels'
-  ClientHeight = 706
-  ClientWidth = 388
+  ClientHeight = 1059
+  ClientWidth = 580
   Color = clWhite
-  Constraints.MinHeight = 706
-  Constraints.MinWidth = 343
+  Constraints.MinHeight = 1059
+  Constraints.MinWidth = 514
   DefaultMonitor = dmMainForm
+  DesignTimePPI = 144
   FormStyle = fsStayOnTop
   OnCreate = FormCreate
   Position = poMainFormCenter
   SessionProperties = 'DockedToMain.Checked;MultiColumns.Checked'
   LCLVersion = '3.2.0.0'
   object CloseList: TBitBtn
-    Left = 305
-    Height = 25
-    Top = 675
-    Width = 75
+    Left = 456
+    Height = 38
+    Top = 1012
+    Width = 112
     Anchors = [akRight, akBottom]
     Caption = 'Close'
     OnClick = CloseListClick
     TabOrder = 0
   end
   object DrawBtn: TBitBtn
-    Left = 8
-    Height = 25
-    Top = 675
-    Width = 67
+    Left = 12
+    Height = 38
+    Top = 1012
+    Width = 100
     Anchors = [akLeft, akBottom]
     Caption = 'Draw'
     OnClick = DrawBtnClick
     TabOrder = 1
   end
   object FileList: TListBox
-    Left = 8
-    Height = 96
-    Top = 8
-    Width = 372
+    Left = 12
+    Height = 144
+    Top = 12
+    Width = 556
     Anchors = [akTop, akLeft, akRight]
     Color = clWhite
     ItemHeight = 0
@@ -52,28 +52,28 @@ object ShowChannelForm: TShowChannelForm
     OnSelectionChange = FileListSelectionChange
   end
   object MultiColumns: TCheckBox
-    Left = 8
-    Height = 19
-    Top = 178
-    Width = 95
+    Left = 12
+    Height = 29
+    Top = 267
+    Width = 137
     Caption = 'Multi columns'
     TabOrder = 3
     OnChange = MultiColumnsChange
   end
   object FastMode: TCheckBox
-    Left = 8
-    Height = 19
-    Top = 112
-    Width = 73
+    Left = 12
+    Height = 29
+    Top = 168
+    Width = 109
     Caption = 'Fast mode'
     TabOrder = 4
     OnChange = FastModeChange
   end
   object RecordsNumber: TTrackBar
-    Left = 8
-    Height = 25
-    Top = 136
-    Width = 372
+    Left = 12
+    Height = 38
+    Top = 204
+    Width = 556
     Frequency = 100
     Max = 100
     Min = 2
@@ -84,55 +84,55 @@ object ShowChannelForm: TShowChannelForm
     TabOrder = 5
   end
   object SlowLabel: TLabel
-    Left = 10
-    Height = 13
-    Top = 160
-    Width = 25
+    Left = 15
+    Height = 23
+    Top = 240
+    Width = 35
     Caption = 'Slow'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlue
-    Font.Height = -11
+    Font.Height = -17
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentColor = False
     ParentFont = False
   end
   object RecordCount: TLabel
-    Left = 161
-    Height = 13
-    Top = 160
-    Width = 62
+    Left = 241
+    Height = 23
+    Top = 240
+    Width = 93
     Alignment = taCenter
     Anchors = [akTop]
     Caption = 'Divide by 10'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clMaroon
-    Font.Height = -11
+    Font.Height = -17
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentColor = False
     ParentFont = False
   end
   object FastLabel: TLabel
-    Left = 356
-    Height = 13
-    Top = 160
-    Width = 21
+    Left = 535
+    Height = 23
+    Top = 240
+    Width = 29
     Anchors = [akTop, akRight]
     Caption = 'Fast'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlue
-    Font.Height = -11
+    Font.Height = -17
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentColor = False
     ParentFont = False
   end
   object SIBRParamLbl: TLabel
-    Left = 279
-    Height = 15
-    Top = 199
-    Width = 102
+    Left = 417
+    Height = 25
+    Top = 298
+    Width = 153
     Anchors = [akTop, akRight]
     Caption = 'Computed params:'
     Font.CharSet = ANSI_CHARSET
@@ -143,10 +143,10 @@ object ShowChannelForm: TShowChannelForm
   end
   object ChannelList: TListBox
     AnchorSideRight.Control = Splitter1
-    Left = 8
-    Height = 449
-    Top = 215
-    Width = 202
+    Left = 12
+    Height = 674
+    Top = 322
+    Width = 303
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
     ExtendedSelect = False
@@ -159,12 +159,12 @@ object ShowChannelForm: TShowChannelForm
   end
   object SIBRParamList: TListBox
     AnchorSideLeft.Control = Splitter1
-    Left = 216
-    Height = 449
-    Top = 216
-    Width = 165
+    Left = 324
+    Height = 673
+    Top = 324
+    Width = 240
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Left = 6
+    BorderSpacing.Left = 9
     DragMode = dmAutomatic
     ExtendedSelect = False
     ItemHeight = 0
@@ -176,18 +176,18 @@ object ShowChannelForm: TShowChannelForm
     OnDrawItem = SIBRParamListDrawItem
   end
   object Splitter1: TSplitter
-    Left = 210
-    Height = 448
-    Top = 216
-    Width = 6
+    Left = 315
+    Height = 672
+    Top = 324
+    Width = 9
     Align = alNone
     Anchors = [akTop, akLeft, akBottom]
   end
   object Label1: TLabel
-    Left = 8
-    Height = 15
-    Top = 199
-    Width = 75
+    Left = 12
+    Height = 25
+    Top = 298
+    Width = 110
     Caption = 'Raw channels:'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clNavy
@@ -196,21 +196,21 @@ object ShowChannelForm: TShowChannelForm
     ParentFont = False
   end
   object DrawGroupBtn: TButton
-    Left = 80
-    Height = 25
-    Top = 675
-    Width = 75
+    Left = 120
+    Height = 38
+    Top = 1012
+    Width = 112
     Anchors = [akLeft, akBottom]
     Caption = 'Draw group'
     TabOrder = 9
     OnClick = DrawGroupBtnClick
   end
   object Image1: TImage
-    Left = 165
-    Height = 25
+    Left = 248
+    Height = 38
     Hint = 'Save template'
-    Top = 675
-    Width = 25
+    Top = 1012
+    Width = 38
     Anchors = [akLeft, akBottom]
     OnClick = Image1Click
     ParentShowHint = False
@@ -243,13 +243,14 @@ object ShowChannelForm: TShowChannelForm
       0000000049454E44AE426082
     }
     ShowHint = True
+    Stretch = True
   end
   object Image2: TImage
-    Left = 197
-    Height = 25
+    Left = 296
+    Height = 38
     Hint = 'Load template'
-    Top = 675
-    Width = 25
+    Top = 1012
+    Width = 38
     Anchors = [akLeft, akBottom]
     OnClick = Image2Click
     ParentShowHint = False
@@ -281,13 +282,14 @@ object ShowChannelForm: TShowChannelForm
       776561766572204672656520372E30B0E96D7E0000000049454E44AE426082
     }
     ShowHint = True
+    Stretch = True
   end
   object Image3: TImage
-    Left = 229
-    Height = 25
+    Left = 344
+    Height = 38
     Hint = 'Import template'
-    Top = 675
-    Width = 25
+    Top = 1012
+    Width = 38
     Anchors = [akLeft, akBottom]
     OnClick = Image3Click
     ParentShowHint = False
@@ -328,12 +330,13 @@ object ShowChannelForm: TShowChannelForm
       372E30B0E96D7E0000000049454E44AE426082
     }
     ShowHint = True
+    Stretch = True
   end
   object PrintToCSVbtn: TButton
-    Left = 112
-    Height = 25
-    Top = 184
-    Width = 75
+    Left = 168
+    Height = 38
+    Top = 276
+    Width = 112
     Caption = 'Print to CSV'
     TabOrder = 10
     OnClick = PrintToCSVbtnClick
@@ -342,12 +345,12 @@ object ShowChannelForm: TShowChannelForm
     StoredValues = <    
       item
       end>
-    Left = 168
-    Top = 608
+    Left = 252
+    Top = 912
   end
   object SaveDialog1: TSaveDialog
     Filter = '*.csv'
-    Left = 272
-    Top = 608
+    Left = 408
+    Top = 912
   end
 end

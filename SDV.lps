@@ -9,7 +9,7 @@
         <Filename Value="SDV.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="40" Y="34"/>
+        <CursorPos X="91" Y="31"/>
         <UsageCount Value="208"/>
       </Unit>
       <Unit>
@@ -19,8 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="575"/>
-        <CursorPos X="3" Y="580"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="757"/>
+        <CursorPos X="81" Y="779"/>
         <UsageCount Value="208"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -29,8 +30,8 @@
         <Filename Value="usertypes.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UserTypes"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="65"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="55"/>
         <CursorPos X="55" Y="107"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
@@ -39,9 +40,9 @@
         <Filename Value="utils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Utils"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="19"/>
-        <CursorPos X="31" Y="37"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="97"/>
+        <CursorPos X="11" Y="17"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
       </Unit>
@@ -49,19 +50,18 @@
         <Filename Value="tffobjects.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TffObjects"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="83"/>
         <CursorPos Y="99"/>
         <UsageCount Value="201"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="parsebindb.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ParseBinDb"/>
         <EditorIndex Value="9"/>
-        <TopLine Value="263"/>
-        <CursorPos Y="280"/>
+        <TopLine Value="127"/>
+        <CursorPos X="83" Y="132"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit>
@@ -72,8 +72,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="10"/>
-        <TopLine Value="117"/>
-        <CursorPos X="116" Y="122"/>
+        <TopLine Value="510"/>
+        <CursorPos X="69" Y="127"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -83,8 +83,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="LineSerieUtils"/>
         <EditorIndex Value="12"/>
-        <TopLine Value="345"/>
-        <CursorPos X="30" Y="368"/>
+        <TopLine Value="38"/>
+        <CursorPos X="103" Y="54"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
       </Unit>
@@ -93,8 +93,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ChartUtils"/>
         <EditorIndex Value="11"/>
-        <TopLine Value="503"/>
-        <CursorPos X="17" Y="40"/>
+        <TopLine Value="405"/>
+        <CursorPos X="69" Y="415"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
       </Unit>
@@ -119,8 +119,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="LimitsForm"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="3" Y="49"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="18"/>
+        <CursorPos X="98" Y="52"/>
         <UsageCount Value="266"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -129,7 +130,7 @@
         <Filename Value="sibrparam.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SIBRParam"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="21"/>
         <CursorPos X="25" Y="133"/>
         <UsageCount Value="410"/>
@@ -156,8 +157,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ParameterSet"/>
-        <EditorIndex Value="13"/>
-        <TopLine Value="41"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="17"/>
         <CursorPos X="23" Y="164"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
@@ -167,9 +168,9 @@
         <Filename Value="parsecsv.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ParseCSV"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="15"/>
-        <CursorPos X="134" Y="113"/>
+        <EditorIndex Value="16"/>
+        <TopLine Value="98"/>
+        <CursorPos X="14" Y="120"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
       </Unit>
@@ -180,28 +181,105 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ChartOptions"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <CursorPos X="42" Y="124"/>
         <UsageCount Value="486"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="C:\lazarus\lcl\controls.pp"/>
-        <UnitName Value="Controls"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1755"/>
-        <CursorPos X="86" Y="1826"/>
-        <UsageCount Value="6"/>
+        <Filename Value="navigation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="NavigationForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Navigation"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="112" Y="30"/>
+        <UsageCount Value="206"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tatools.pas"/>
         <UnitName Value="TATools"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="105"/>
-        <CursorPos X="32" Y="121"/>
-        <UsageCount Value="192"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1178"/>
+        <CursorPos X="57" Y="1199"/>
+        <UsageCount Value="163"/>
+      </Unit>
+      <Unit>
+        <Filename Value="limitsform.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="99"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="logicchannels.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="LogicChannelForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="LogicChannels"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="30"/>
+        <CursorPos X="122" Y="41"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\include\customlistbox.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="221"/>
+        <CursorPos Y="241"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\tachartcombos.pas"/>
+        <UnitName Value="TAChartCombos"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="74"/>
+        <CursorPos X="16" Y="93"/>
+        <UsageCount Value="76"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="13"/>
+        <CursorPos X="14" Y="17"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\tacustomseries.pas"/>
+        <UnitName Value="TACustomSeries"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="177"/>
+        <CursorPos X="55" Y="196"/>
+        <UsageCount Value="0"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2757"/>
+        <CursorPos Y="2776"/>
+        <UsageCount Value="0"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\taseries.pas"/>
+        <UnitName Value="TASeries"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="843"/>
+        <CursorPos Y="863"/>
+        <UsageCount Value="33"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\tacustomsource.pas"/>
+        <UnitName Value="TACustomSource"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1821"/>
+        <CursorPos X="65" Y="1847"/>
+        <UsageCount Value="33"/>
       </Unit>
     </Units>
     <Debugger>
@@ -210,123 +288,123 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="717" Column="11" TopLine="703"/>
+        <Caret Line="1657" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="704" Column="11" TopLine="703"/>
+        <Caret Line="1656" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="787" Column="41" TopLine="9"/>
+        <Caret Line="1657" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="648" Column="71" TopLine="635"/>
+        <Caret Line="1656" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="962" Column="3" TopLine="959"/>
+        <Caret Line="1657" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="968" Column="79" TopLine="959"/>
+        <Caret Line="1656" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="1327" Column="3" TopLine="1325"/>
+        <Caret Line="1657" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="976" Column="110" TopLine="969"/>
+        <Caret Line="1656" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="1087" Column="3" TopLine="1084"/>
+        <Caret Line="1657" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="305" Column="35" TopLine="297"/>
+        <Caret Line="1656" TopLine="1636"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="1067" Column="37" TopLine="1046"/>
+        <Caret Line="1658" Column="69" TopLine="1642"/>
+      </Position>
+      <Position>
+        <Filename Value="logicchannels.pas"/>
+        <Caret Line="41" Column="122" TopLine="30"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="903" TopLine="895"/>
+        <Caret Line="628" Column="3" TopLine="599"/>
+      </Position>
+      <Position>
+        <Filename Value="usertypes.pas"/>
+        <Caret Line="107" Column="55" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="logicchannels.pas"/>
+        <Caret Line="41" Column="122" TopLine="30"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="628" Column="3" TopLine="612"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
+        <Caret Line="316" Column="62" TopLine="300"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="192" Column="54" TopLine="177"/>
+        <Caret Line="1466" Column="3" TopLine="1462"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="644" Column="40" TopLine="602"/>
+      </Position>
+      <Position>
+        <Filename Value="logicchannels.pas"/>
+        <Caret Line="41" Column="122" TopLine="30"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
+        <Caret Line="1479" Column="62" TopLine="1467"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="192" Column="54" TopLine="177"/>
+        <Caret Line="1485" Column="12" TopLine="1467"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="1682" Column="74" TopLine="1653"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
+        <Caret Line="1660" Column="46" TopLine="1653"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="1471" Column="3" TopLine="1467"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
+        <Caret Line="1672" Column="126" TopLine="1663"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="429" Column="40" TopLine="412"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
+        <Caret Line="12" Column="114"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
+        <Caret Line="393" Column="88" TopLine="362"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="193" Column="54" TopLine="178"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="194" Column="54" TopLine="179"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="195" Column="54" TopLine="180"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="750" Column="28" TopLine="730"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="580" Column="3" TopLine="575"/>
+        <Caret Line="672" Column="90" TopLine="645"/>
       </Position>
     </JumpHistory>
     <RunParams>

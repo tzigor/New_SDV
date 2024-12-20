@@ -64,7 +64,8 @@ begin
   ErrorCode:= NO_ERROR;
   TffStructure.Init;
   CSVContent:= TStringList.Create;
-  TimePos:= 1;
+  DateTime:= Now();
+  TimePos:= 0;
   nPos:= 0;
   ProgressInit(100, 'CSV Parsing');
   PrevPercent:= 0;
@@ -91,6 +92,8 @@ begin
          else SubStr:= SubStr + CSVContent[0][i];
       end;
 
+      if TimePos = 0 then TffStructure.AddChannel('TIME', '', 'F4', '1', Tff_Ver);
+
       SubStr:= '';
       nPos:= 0;
       for i:= 1 to LineLength do begin
@@ -108,8 +111,13 @@ begin
       end;
 
       for i:=1 to CSVContent.Count-1 do begin
-         wStr:= GetParamValue(TimePos, CSVContent[i]);
-         SmartStrToDateTime(wStr, DateTime);
+         if TimePos > 0 then begin
+            wStr:= GetParamValue(TimePos, CSVContent[i]);
+            SmartStrToDateTime(wStr, DateTime);
+         end
+         else begin
+            DateTime:= IncSecond(DateTime, 1);
+         end;
 
          if RTCmsPos > 0 then begin
             TryStrToInt(GetParamValue(RTCmsPos, CSVContent[i]), MSecs);

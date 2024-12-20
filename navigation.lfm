@@ -1,0 +1,21 @@
+object NavigationForm: TNavigationForm
+  Left = 5163
+  Height = 275
+  Top = -713
+  Width = 993
+  Caption = 'Navigator'
+  ClientHeight = 275
+  ClientWidth = 993
+  DesignTimePPI = 144
+  LCLVersion = '3.2.0.0'
+  object ChartNavPanel1: TChartNavPanel
+    Left = 0
+    Height = 275
+    Top = 0
+    Width = 993
+    AllowDragNavigation = False
+    LogicalExtentPen.Width = 2
+    MiniMap = True
+    Align = alClient
+  end
+end

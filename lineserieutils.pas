@@ -17,6 +17,7 @@ function GetColorBySerieName(LineSerieName: String): TColor;
 function GetLineSerie(ChartNumber, LineSerieNumber: Byte): TLineSeries;
 function GetConstLineSerie(ChartNumber, LineSerieNumber: Byte): TConstantLine;
 procedure PointersVisible(Visible: Boolean);
+function GetHorLineSerie(ChartNumber, LineSerieNumber: Byte): TConstantLine;
 procedure ZoomCurrentExtent(Chart1LineSeries: TLineSeries);
 function GetFreeLineSerie(ChartNum: Byte): Byte;
 procedure SerieReset(LineSerie: TLineSeries);
@@ -48,6 +49,7 @@ begin
   begin
     Name:= AChart.Name + AName;
     AxisIndexY:= 0;
+    Pointer.Pen.Color:= clBlack;
     Pointer.Style := App.GPointerStyleBox.PointerStyle;
     Pointer.VertSize:= App.GPointSizeBox.ItemIndex + 2;
     Pointer.HorizSize:= App.GPointSizeBox.ItemIndex + 2;

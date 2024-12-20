@@ -1,49 +1,50 @@
 object ParamSetFrm: TParamSetFrm
-  Left = 2270
-  Height = 407
-  Top = -431
-  Width = 194
+  Left = 5203
+  Height = 610
+  Top = -786
+  Width = 291
   BorderIcons = [biSystemMenu]
   Caption = 'Parameter set'
-  ClientHeight = 407
-  ClientWidth = 194
+  ClientHeight = 610
+  ClientWidth = 291
   Color = clWhite
-  Constraints.MaxHeight = 407
-  Constraints.MaxWidth = 194
-  Constraints.MinHeight = 407
-  Constraints.MinWidth = 194
+  Constraints.MaxHeight = 610
+  Constraints.MaxWidth = 291
+  Constraints.MinHeight = 610
+  Constraints.MinWidth = 291
+  DesignTimePPI = 144
   Position = poMainFormCenter
   LCLVersion = '3.2.0.0'
   object ParamSetList: TListBox
-    Left = 6
-    Height = 312
+    Left = 9
+    Height = 468
     Top = 0
-    Width = 183
+    Width = 274
     ItemHeight = 0
     TabOrder = 0
     OnClick = ParamSetListClick
     OnDblClick = ParamSetListDblClick
   end
   object Label1: TLabel
-    Left = 8
-    Height = 15
-    Top = 320
-    Width = 35
+    Left = 12
+    Height = 25
+    Top = 480
+    Width = 51
     Caption = 'Name:'
     ParentColor = False
   end
   object ParamSetName: TEdit
-    Left = 48
-    Height = 23
-    Top = 315
-    Width = 141
+    Left = 72
+    Height = 33
+    Top = 472
+    Width = 212
     TabOrder = 1
   end
   object DeleteSet: TBitBtn
-    Left = 103
-    Height = 25
-    Top = 344
-    Width = 86
+    Left = 154
+    Height = 38
+    Top = 516
+    Width = 129
     Caption = 'Delete'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
@@ -86,29 +87,29 @@ object ParamSetFrm: TParamSetFrm
     TabOrder = 2
   end
   object LoadSet: TButton
-    Left = 6
-    Height = 25
-    Top = 376
-    Width = 86
+    Left = 9
+    Height = 38
+    Top = 564
+    Width = 129
     Caption = 'Load'
     TabOrder = 3
     Visible = False
     OnClick = LoadSetClick
   end
   object CloseBtn: TButton
-    Left = 103
-    Height = 25
-    Top = 376
-    Width = 86
+    Left = 154
+    Height = 38
+    Top = 564
+    Width = 129
     Caption = 'Close'
     TabOrder = 4
     OnClick = CloseBtnClick
   end
   object SaveSet: TButton
-    Left = 6
-    Height = 25
-    Top = 376
-    Width = 86
+    Left = 9
+    Height = 38
+    Top = 564
+    Width = 129
     Caption = 'Save'
     TabOrder = 5
     Visible = False

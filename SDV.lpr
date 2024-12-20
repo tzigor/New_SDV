@@ -13,7 +13,7 @@ uses
   Forms, tachartlazaruspkg, tachartaggpas, datetimectrls, lazcontrols,
   printer4lazarus, Main, UserTypes, Utils, TffObjects, ParseBinDb, ChannelsForm,
   LineSerieUtils, ParamOptions, LimitsForm, SIBRParam, HorLineOptions,
-  ParameterSet, ParseCSV, ChartOptions
+  ParameterSet, ParseCSV, ChartOptions, Navigation, LogicChannels
   { you can add units after this };
 
 {$R *.res}
@@ -29,6 +29,8 @@ begin
   Application.CreateForm(THorLineForm, HorLineForm);
   Application.CreateForm(TParamSetFrm, ParamSetFrm);
   Application.CreateForm(TChartOptionsForm, ChartOptionsForm);
+  Application.CreateForm(TNavigationForm, NavigationForm);
+  Application.CreateForm(TLogicChannelForm, LogicChannelForm);
   Application.Run;
 end.
 

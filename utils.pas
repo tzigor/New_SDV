@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, DateUtils,
   UserTypes, StrUtils, Buttons, LCLType, TASeries, TADataTools, TATools,
-  LCLIntf, Clipbrd, TAGraph, ParseCSV, GraphUtil, ExtCtrls;
+  LCLIntf, Clipbrd, TAGraph, ParseCSV, GraphUtil, ExtCtrls, LogicChannels;
 
 function GetErrorMessage(error: Byte): PChar;
 procedure LoadByteArray(const AFileName: string);
@@ -116,7 +116,12 @@ begin
       NewFileOpened:= True;
       Inc(SourceCount);
       CurrentSource:= SourceCount - 1;
-      OpenChannelForm();
+      if LogicAnalyzerMode then begin
+         ShowChannelForm.FastMode.Checked:= False;
+         FillLogicChannelList();
+         LogicChannelForm.Show;
+      end
+      else OpenChannelForm();
    end
    else Application.MessageBox(GetErrorMessage(ErrorCode),'Error', MB_ICONERROR + MB_OK);
    Application.ProcessMessages;
