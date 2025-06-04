@@ -1,7 +1,7 @@
 object ParamSetFrm: TParamSetFrm
-  Left = 5203
+  Left = 4491
   Height = 610
-  Top = -786
+  Top = -671
   Width = 291
   BorderIcons = [biSystemMenu]
   Caption = 'Parameter set'
@@ -14,7 +14,7 @@ object ParamSetFrm: TParamSetFrm
   Constraints.MinWidth = 291
   DesignTimePPI = 144
   Position = poMainFormCenter
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.8.0.0'
   object ParamSetList: TListBox
     Left = 9
     Height = 468

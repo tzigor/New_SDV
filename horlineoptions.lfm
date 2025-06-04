@@ -1,7 +1,7 @@
 object HorLineForm: THorLineForm
-  Left = 4545
+  Left = 5470
   Height = 324
-  Top = -638
+  Top = -773
   Width = 447
   BorderIcons = [biSystemMenu]
   Caption = 'Horizontal Line Options'
@@ -14,7 +14,7 @@ object HorLineForm: THorLineForm
   DesignTimePPI = 144
   OnHide = FormHide
   Position = poMainFormCenter
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.8.0.0'
   object GroupBox1: TGroupBox
     Left = 12
     Height = 192

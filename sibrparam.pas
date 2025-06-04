@@ -14,11 +14,10 @@ function GetCompSonde(SelectedSource: Word; Param: String; n: Integer): Double;
 
 var
   VT0R1F1, VT0R2F1, VT0R1F2, VT0R2F2, VT1R1F1, VT1R2F1, VT2R1F1, VT2R2F1, VT3R1F1, VT3R2F1, VT1R1F2, VT1R2F2, VT2R1F2, VT2R2F2, VT3R1F2, VT3R2F2: complex;
-  VR1C0F1, VR2C0F1, VR1C0F2, VR2C0F2, VR1C1F1, VR2C1F1, VR1C2F1, VR2C2F1, VR1C3F1, VR2C3F1, VR1C1F2, VR2C1F2, VR1C2F2, VR2C2F2, VR1C3F2, VR2C3F2: complex;
   T0F1_UNC, T1F1_UNC, T2F1_UNC, T3F1_UNC, T0F2_UNC, T1F2_UNC, T2F2_UNC, T3F2_UNC: complex;
 
 implementation
-uses Utils, ChartUtils, Main, UserTypes;
+uses ChartUtils, Main, UserTypes;
 
 var SondeError: Boolean;
 
@@ -55,28 +54,12 @@ procedure FillCoplexParams(SelectedSource, n: Integer; Freq: Byte);
 begin
   SondeError:= False;
   if Freq = 0 then begin // F1 - 400 KHz
-     //VT0R1F1:= ComplexAmplitude(SelectedSource, 0, n, 4);
-     //VT0R2F1:= ComplexAmplitude(SelectedSource, 1, n, 4);
-
      VT1R1F1:= ComplexAmplitude(SelectedSource, 4, n, 4);
      VT1R2F1:= ComplexAmplitude(SelectedSource, 5, n, 4);
      VT2R1F1:= ComplexAmplitude(SelectedSource, 8, n, 4);
      VT2R2F1:= ComplexAmplitude(SelectedSource, 9, n, 4);
      VT3R1F1:= ComplexAmplitude(SelectedSource, 12, n, 4);
      VT3R2F1:= ComplexAmplitude(SelectedSource, 13, n, 4);
-
-     //VR1C0F1:= ComplexAmplitude(SelectedSource, 0, n, 0);
-     //VR2C0F1:= ComplexAmplitude(SelectedSource, 1, n, 0);
-
-     //VR1C1F1:= ComplexAmplitude(SelectedSource, 4, n, 0);
-     //VR2C1F1:= ComplexAmplitude(SelectedSource, 5, n, 0);
-     //VR1C2F1:= ComplexAmplitude(SelectedSource, 8, n, 0);
-     //VR2C2F1:= ComplexAmplitude(SelectedSource, 9, n, 0);
-     //VR1C3F1:= ComplexAmplitude(SelectedSource, 12, n, 0);
-     //VR2C3F1:= ComplexAmplitude(SelectedSource, 13, n, 0);
-
-     //if (VT0R1F1<>0) and
-     //   (VT0R2F1<>0) and
      if
         (VT1R1F1<>0) and
         (VT1R2F1<>0) and
@@ -84,20 +67,7 @@ begin
         (VT2R2F1<>0) and
         (VT3R1F1<>0) and
         (VT3R2F1<>0)
-        //(VR1C0F1<>0) and
-        //(VR2C0F1<>0) and
-        //(VR1C1F1<>0) and
-        //(VR2C1F1<>0) and
-        //(VR1C2F1<>0) and
-        //(VR2C2F1<>0) and
-        //(VR1C3F1<>0) and
-        //(VR2C3F1<>0)
         then begin
-           //T0F1_UNC:= VR1C0F1 / VR2C0F1;
-           //T1F1_UNC:= (VT1R1F1/VR1C1F1) / (VT1R2F1/VR2C1F1);
-           //T2F1_UNC:= (VT2R2F1/VR2C2F1) / (VT2R1F1/VR1C2F1);
-           //T3F1_UNC:= (VT3R1F1/VR1C3F1) / (VT3R2F1/VR2C3F1);
-
            T1F1_UNC:= (VT1R1F1) / (VT1R2F1);
            T2F1_UNC:= (VT2R2F1) / (VT2R1F1);
            T3F1_UNC:= (VT3R1F1) / (VT3R2F1);
@@ -105,28 +75,12 @@ begin
         else SondeError:= True;
    end
    else begin // F2 - 2 MHz
-     //VT0R1F2:= ComplexAmplitude(SelectedSource, 2, n, 4);
-     //VT0R2F2:= ComplexAmplitude(SelectedSource, 3, n, 4);
-
      VT1R1F2:= ComplexAmplitude(SelectedSource, 6, n, 4);
      VT1R2F2:= ComplexAmplitude(SelectedSource, 7, n, 4);
      VT2R1F2:= ComplexAmplitude(SelectedSource, 10, n, 4);
      VT2R2F2:= ComplexAmplitude(SelectedSource, 11, n, 4);
      VT3R1F2:= ComplexAmplitude(SelectedSource, 14, n, 4);
      VT3R2F2:= ComplexAmplitude(SelectedSource, 15, n, 4);
-
-     //VR1C0F2:= ComplexAmplitude(SelectedSource, 2, n, 0);
-     //VR2C0F2:= ComplexAmplitude(SelectedSource, 3, n, 0);
-     //
-     //VR1C1F2:= ComplexAmplitude(SelectedSource, 6, n, 0);
-     //VR2C1F2:= ComplexAmplitude(SelectedSource, 7, n, 0);
-     //VR1C2F2:= ComplexAmplitude(SelectedSource, 10, n, 0);
-     //VR2C2F2:= ComplexAmplitude(SelectedSource, 11, n, 0);
-     //VR1C3F2:= ComplexAmplitude(SelectedSource, 14, n, 0);
-     //VR2C3F2:= ComplexAmplitude(SelectedSource, 15, n, 0);
-
-     //if (VT0R1F2<>0) and
-     //   (VT0R2F2<>0) and
      if
         (VT1R1F2<>0) and
         (VT1R2F2<>0) and
@@ -134,20 +88,7 @@ begin
         (VT2R2F2<>0) and
         (VT3R1F2<>0) and
         (VT3R2F2<>0)
-        //(VR1C0F2<>0) and
-        //(VR2C0F2<>0) and
-        //(VR1C1F2<>0) and
-        //(VR2C1F2<>0) and
-        //(VR1C2F2<>0) and
-        //(VR2C2F2<>0) and
-        //(VR1C3F2<>0) and
-        //(VR2C3F2<>0)
         then begin
-           //T0F2_UNC:= VR1C0F2 / VR2C0F2;
-           //T1F2_UNC:= (VT1R1F2/VR1C1F2) / (VT1R2F2/VR2C1F2);
-           //T2F2_UNC:= (VT2R2F2/VR2C2F2) / (VT2R1F2/VR1C2F2);
-           //T3F2_UNC:= (VT3R1F2/VR1C3F2) / (VT3R2F2/VR2C3F2);
-
            T1F2_UNC:= (VT1R1F2) / (VT1R2F2);
            T2F2_UNC:= (VT2R2F2) / (VT2R1F2);
            T3F2_UNC:= (VT3R1F2) / (VT3R2F2);
@@ -163,16 +104,12 @@ begin
    if SondeError then GetSonde:= ParameterError
    else
      case Param of
-       //'P0L_UNC': GetSonde:= angle(T0F1_UNC) * 180/Pi;
-       //'P0H_UNC': GetSonde:= angle(T0F2_UNC) * 180/Pi;
        'P16L_UNC': GetSonde:= angle(T1F1_UNC) * 180/Pi;
        'P22L_UNC': GetSonde:= angle(T2F1_UNC) * 180/Pi;
        'P34L_UNC': GetSonde:= angle(T3F1_UNC) * 180/Pi;
        'P16H_UNC': GetSonde:= angle(T1F2_UNC) * 180/Pi;
        'P22H_UNC': GetSonde:= angle(T2F2_UNC) * 180/Pi;
        'P34H_UNC': GetSonde:= angle(T3F2_UNC) * 180/Pi;
-       //'A0L_UNC': GetSonde:= -20*Log10(cMod(T0F1_UNC));
-       //'A0H_UNC': GetSonde:= -20*Log10(cMod(T0F2_UNC));
        'A16L_UNC': GetSonde:= -20*Log10(cMod(T1F1_UNC));
        'A22L_UNC': GetSonde:= -20*Log10(cMod(T2F1_UNC));
        'A34L_UNC': GetSonde:= -20*Log10(cMod(T3F1_UNC));

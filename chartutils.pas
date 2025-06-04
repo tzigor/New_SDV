@@ -18,14 +18,15 @@ procedure RepaintAll;
 function GetChartNumberStr(Chart: String): String;
 function GetFreeChart: Byte;
 function GetLastChart: Byte;
-procedure ChartsHeight();
 procedure ChartsPosition();
 function GetChartCount: Byte;
 function GetChartNumber(ChartName: String): Byte;
 procedure ZoomChartCurrentExtent(Chart: TChart);
 procedure ZoomFullAll();
 function GetChart(ChartNubmber: Byte): TChart;
+function GetTempChart(ChartNubmber: Byte): TChart;
 function GetSplitter(SplitterNubmber: Byte): TSplitter;
+function GetTempSplitter(SplitterNubmber: Byte): TSplitter;
 procedure DateTimeLineSerieInit;
 procedure FindTimeRange;
 procedure ChartsNavigation(Value: Boolean);
@@ -49,6 +50,7 @@ function GetLogarithmTransform(ChartNubmber: Byte): TLogarithmAxisTransform;
 procedure ChartsDisableRedrawing();
 procedure ChartsEnableRedrawing();
 procedure ChartsLegend(show: Boolean);
+procedure ChartInverted(Invert: Boolean);
 
 implementation
 uses Main, LineSerieUtils, channelsform, ChartOptions, Utils;
@@ -282,6 +284,11 @@ begin
   Result:= TChart(App.FindComponent('Chart' + IntToStr(ChartNubmber)))
 end;
 
+function GetTempChart(ChartNubmber: Byte): TChart;
+begin
+  Result:= TChart(App.FindComponent('Temp' + IntToStr(ChartNubmber)))
+end;
+
 procedure ChartDefaultSettings(Chart: TChart);
 begin
    Chart.Frame.Color:= RGBToColor(100, 100, 100);
@@ -311,13 +318,25 @@ begin
    Chart.AxisList[0].Range.UseMin:= False;
    Chart.AxisList[0].Range.UseMax:= False;
    Chart.AxisList[0].Inverted:= False;
+   Chart.AxisList[1].Inverted:= False;
 
    GetLogarithmTransform(GetChartNumber(Chart.Name)).Enabled:= False;
+end;
+
+procedure ChartInverted(Invert: Boolean);
+var i: Byte;
+begin
+  for i:=1 to MAX_CHART_NUMBER do GetChart(i).AxisList[1].Inverted:= Invert;
 end;
 
 function GetSplitter(SplitterNubmber: Byte): TSplitter;
 begin
   Result:= TSplitter(App.FindComponent('Splitter' + IntToStr(SplitterNubmber)))
+end;
+
+function GetTempSplitter(SplitterNubmber: Byte): TSplitter;
+begin
+  Result:= TSplitter(App.FindComponent('TempSplitter' + IntToStr(SplitterNubmber)))
 end;
 
 function GetChartNumberStr(Chart: String): String;
@@ -398,12 +417,6 @@ begin
   end;
 end;
 
-procedure ChartsHeight();
-var i : byte;
-begin
-  for i:=1 to MAX_CHART_NUMBER do GetChart(i).Height:= App.ChartScrollBox.Height Div GetChartCount;
-end;
-
 procedure ChartsPosition();
 var i, n             : Byte;
     Chart, PrevChart : TChart;
@@ -411,7 +424,8 @@ var i, n             : Byte;
     Splitter         : TSplitter;
     PrevSplitter     : TSplitter;
 begin;
-   FirstChart:= GetFirstChart;
+   if GetChart(1).Visible then FirstChart:= 1
+   else FirstChart:= GetFirstChart;
    PrevChart:= GetChart(FirstChart);
    PrevSplitter:= GetSplitter(FirstChart);
    PrevSplitter.Top:= 0;

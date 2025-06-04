@@ -1,7 +1,7 @@
 object LogicChannelForm: TLogicChannelForm
-  Left = 4740
+  Left = 5308
   Height = 419
-  Top = -859
+  Top = -929
   Width = 381
   BorderIcons = [biMinimize, biMaximize]
   Caption = 'Logic channels'
@@ -9,7 +9,8 @@ object LogicChannelForm: TLogicChannelForm
   ClientWidth = 381
   DesignTimePPI = 144
   FormStyle = fsStayOnTop
-  LCLVersion = '3.2.0.0'
+  Position = poMainFormCenter
+  LCLVersion = '3.8.0.0'
   object LogicChannelList: TListBox
     Left = 8
     Height = 352

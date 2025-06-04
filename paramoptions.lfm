@@ -1,7 +1,7 @@
 object ParamOptionsForm: TParamOptionsForm
-  Left = 4597
+  Left = 5037
   Height = 650
-  Top = -801
+  Top = -438
   Width = 444
   BorderIcons = []
   BorderStyle = bsDialog
@@ -12,7 +12,7 @@ object ParamOptionsForm: TParamOptionsForm
   FormStyle = fsStayOnTop
   OnHide = FormHide
   Position = poMainFormCenter
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.8.0.0'
   object OkBtn: TButton
     Left = 320
     Height = 38

@@ -46,6 +46,7 @@ begin
     MiddleILine:= (YMin + YMax) / 2;
     Offset:= (YMax - YMin) * App.LogicTolerance.Value / 2 / 100;
 
+    DeleteHorLines(GetChart(1));
     LowerLevelSerieData:= AddHorLineSerie(GetChart(1), 'HorizontalLine1', MiddleILine - Offset);
     UpperLevelSerieData:= AddHorLineSerie(GetChart(1), 'HorizontalLine2', MiddleILine + Offset);
   end;
@@ -63,6 +64,7 @@ begin
     MiddleILine:= (YMin + YMax) / 2;
     Offset:= (YMax - YMin) * App.LogicTolerance.Value / 2 / 100;
 
+    DeleteHorLines(GetChart(2));
     LowerLevelSerieClock:= AddHorLineSerie(GetChart(2), 'HorizontalLine2', MiddleILine - Offset);
     UpperLevelSerieClock:= AddHorLineSerie(GetChart(2), 'HorizontalLine3', MiddleILine + Offset);
   end;

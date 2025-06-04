@@ -22,6 +22,9 @@ type
   TApp = class(TForm)
     AllocateArea: TDataPointDistanceTool;
     AnalyzeBtn: TButton;
+    InvertedCh: TCheckBox;
+    Image1: TImage;
+    SaveResultBtn: TButton;
     FindPacketBtn: TButton;
     Calculator: TImage;
     catUser1LogarithmAxisTransform1: TLogarithmAxisTransform;
@@ -273,6 +276,7 @@ type
     procedure GPointSizeBoxChange(Sender: TObject);
     procedure HideLabelClick(Sender: TObject);
     procedure CalculatorClick(Sender: TObject);
+    procedure InvertedChChange(Sender: TObject);
     procedure KeepDistanceChange(Sender: TObject);
     procedure LimitsItemClick(Sender: TObject);
     procedure LogicAnalyzerChChange(Sender: TObject);
@@ -286,6 +290,7 @@ type
     procedure PanOffClick(Sender: TObject);
     procedure PointerSizeChange(Sender: TObject);
     procedure RemoveLabelsBtnClick(Sender: TObject);
+    procedure SaveResultBtnClick(Sender: TObject);
     procedure SaveToJPEGClick(Sender: TObject);
     procedure ScreenShotClick(Sender: TObject);
     procedure ShowLabelClick(Sender: TObject);
@@ -381,6 +386,8 @@ var
   FastModeDivider    : Byte = 1;
 
   ConfiguredTools    : TStringList;
+
+  ChartDeleted       : Boolean = False;
 
   procedure OpenChannelForm();
   procedure PrepareChannelForm();
@@ -566,6 +573,11 @@ begin
   AProcess.Free;
 end;
 
+procedure TApp.InvertedChChange(Sender: TObject);
+begin
+  ChartInverted(InvertedCh.Checked);
+end;
+
 procedure TApp.KeepDistanceChange(Sender: TObject);
 begin
   if KeepDistance.Checked then DistanceTool.Options:= [dpdoPermanent]
@@ -598,6 +610,8 @@ begin
     LogicTolerance.Visible:= True;
     PointerSize.Visible:= True;
     AnalyzeBtn.Visible:= True;
+    FindPacketBtn.Visible:= True;
+    SaveResultBtn.Visible:= True;
     if Bin_DbToBin_Db() then begin
       res:= DrawChart('Data', -1, True, False);
       res:= DrawChart('Clock', -1, True, False);
@@ -623,6 +637,8 @@ begin
     LogicTolerance.Visible:= False;
     PointerSize.Visible:= False;
     AnalyzeBtn.Visible:= False;
+    FindPacketBtn.Visible:= False;
+    SaveResultBtn.Visible:= False;
 
     LogicAnalyzed:= False;
 
@@ -664,6 +680,7 @@ begin
     ChartLink.Checked:= True;
     OpenChannelForm();
   end;
+  ChartDeleted:= True;
 end;
 
 procedure TApp.MenuItem3Click(Sender: TObject);
@@ -748,6 +765,40 @@ end;
 procedure TApp.RemoveLabelsBtnClick(Sender: TObject);
 begin
   RemoveAllLabels();
+end;
+
+procedure TApp.SaveResultBtnClick(Sender: TObject);
+var
+  FName, wStr : String;
+  FS, FSt     : TextFile;
+  i           : LongInt;
+begin
+  if LogicAnalyzerSerie.Count > 0 then begin
+    wStr:= IntToStr(DateTimeToUnix(Now));
+    FName:= CurrentOpenedFile + '_Bits(' + wStr + ').csv';
+    SaveDialog1.FileName:= FName;
+    if SaveDialog1.Execute then begin
+      FName:= LeftStr(SaveDialog1.FileName, Length(SaveDialog1.FileName) - 3);
+      AssignFile(FS, FName + 'csv');
+      AssignFile(FSt, FName + 'txt');
+      try
+      Rewrite(FS);
+      Rewrite(FSt);
+      Writeln(FS, 'N,Bit');
+      for i:=0 to LogicAnalyzerSerie.Count - 1 do begin
+        Writeln(FS, IntToStr(i) + ',' + FloatToStr(LogicAnalyzerSerie.GetYValue(i)));
+        Write(FSt, FloatToStr(LogicAnalyzerSerie.GetYValue(i)))
+      end;
+      CloseFile(FS);
+      CloseFile(FSt);
+      except
+         on E: EInOutError do begin
+            Application.MessageBox('Log file cannot be openned.', 'Error', MB_ICONERROR + MB_OK);
+         end;
+      end;
+      ShowMessage('Saved.');
+    end;
+  end;
 end;
 
 procedure TApp.SaveToJPEGClick(Sender: TObject);
@@ -1453,7 +1504,7 @@ var ClockSerie, DataSerie : TLineSeries;
 begin
   ClockSerie:= GetLineSerie(2, 1);
   DataSerie:= GetLineSerie(1, 1);
-  if ClockSerie.Count > 0 then begin
+  if (ClockSerie.Count > 0) And (DataSerie.Count > 0) then begin
      if Not LogicAnalyzed then LogicAnalyzerSerie:= GetLineSerie(3, 1);
      LogicAnalyzerSerie.BeginUpdate;
      LogicAnalyzerSerie.Clear;
@@ -1642,26 +1693,28 @@ end;
 procedure TApp.FindPacketBtnClick(Sender: TObject);
 var i: LongInt;
 begin
-  Offset:= 0;
-  repeat
-    if FindSequence($96) then begin
-      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
-      ColorSequence(3, RGBToColor(255, 255, 0)); // dev addr
-      ColorSequence(6, RGBToColor(255, 0, 255)); // reg addr
-      ColorSequence(1, RGBToColor(0, 255, 0));   // command
-      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
-    end;
-    if FindSequence($69) then begin
-      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
-      ColorSequence(32, RGBToColor(255, 0, 0)); // data
-      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
-      ColorSequence(1, RGBToColor(255, 255, 255)); // CRC
-    end;
-    if FindSequence($69) then begin
-      for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
-      ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
-    end;
-  until Offset >= LogicAnalyzerSerie.Count - 1;
+  if LogicAnalyzerSerie.Count > 0 then begin
+      Offset:= 0;
+      repeat
+        if FindSequence($96) then begin
+          for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+          ColorSequence(3, RGBToColor(255, 255, 0)); // dev addr
+          ColorSequence(6, RGBToColor(255, 0, 255)); // reg addr
+          ColorSequence(1, RGBToColor(0, 255, 0));   // command
+          ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+        end;
+        if FindSequence($69) then begin
+          for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+          ColorSequence(32, RGBToColor(255, 0, 0)); // data
+          ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+          ColorSequence(1, RGBToColor(255, 255, 255)); // CRC
+        end;
+        if FindSequence($69) then begin
+          for i:=1 to 8 do LogicAnalyzerSerie.SetColor(Offset - i, RGBToColor(0, 255, 255));
+          ColorSequence(5, RGBToColor(150, 150, 150)); // CRC
+        end;
+      until Offset >= LogicAnalyzerSerie.Count - 1;
+  end;
 end;
 
 procedure TApp.FitXClick(Sender: TObject);

@@ -29,7 +29,6 @@ type
     IntervalCount: TSpinEdit;
     procedure AtDataOnlyChange(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure IntervalCountChange(Sender: TObject);
     procedure LogarithmicChkChange(Sender: TObject);
     procedure LogBaseChange(Sender: TObject);
@@ -65,11 +64,6 @@ var Chart: TChart;
 begin
   Chart:= GetChart(SelectedChart);
   Chart.AxisList[0].Marks.AtDataOnly:= ChartOptionsForm.AtDataOnly.Checked;
-end;
-
-procedure TChartOptionsForm.FormCreate(Sender: TObject);
-begin
-
 end;
 
 procedure TChartOptionsForm.LogarithmicChkChange(Sender: TObject);
@@ -129,9 +123,7 @@ begin
   RangeMin.Value:= Chart.AxisList[0].Range.Min;
   RangeMax.Value:= Chart.AxisList[0].Range.Max;
   if UseRangeChk.Checked then Chart.AxisList[0].Intervals.Options:= [aipUseCount]
-  else begin
-    ChartDefaultSettings(Chart);
-  end;
+  else ChartDefaultSettings(Chart);
 end;
 
 procedure TChartOptionsForm.YInvertedChkChange(Sender: TObject);

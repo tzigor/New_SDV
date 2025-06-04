@@ -14,7 +14,7 @@ object LimitForm: TLimitForm
   Constraints.MinWidth = 350
   DesignTimePPI = 144
   Position = poMainFormCenter
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.8.0.0'
   object Label1: TLabel
     Left = 24
     Height = 25
