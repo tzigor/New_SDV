@@ -1,21 +1,21 @@
 object ChartOptionsForm: TChartOptionsForm
-  Left = 5478
-  Height = 372
-  Top = -327
+  Left = 4869
+  Height = 478
+  Top = -600
   Width = 480
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Chart Options'
-  ClientHeight = 372
+  ClientHeight = 478
   ClientWidth = 480
   Color = clWhite
   DesignTimePPI = 144
   SessionProperties = 'LogBase.Value;IntervalCount.Value'
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.0.0.4'
   object Button1: TButton
-    Left = 360
+    Left = 344
     Height = 38
-    Top = 324
+    Top = 424
     Width = 112
     Caption = 'Close'
     TabOrder = 0
@@ -44,24 +44,24 @@ object ChartOptionsForm: TChartOptionsForm
     Height = 33
     Top = 120
     Width = 159
-    OnChange = RangeMinChange
     TabOrder = 3
+    OnChange = RangeMinChange
   end
   object RangeMax: TFloatSpinEdit
     Left = 60
     Height = 33
     Top = 160
     Width = 159
-    OnChange = RangeMaxChange
     TabOrder = 4
+    OnChange = RangeMaxChange
   end
   object IntervalCount: TSpinEdit
     Left = 156
     Height = 33
     Top = 216
     Width = 144
-    OnChange = IntervalCountChange
     TabOrder = 5
+    OnChange = IntervalCountChange
   end
   object Label1: TLabel
     Left = 16
@@ -98,9 +98,9 @@ object ChartOptionsForm: TChartOptionsForm
     Height = 33
     Top = 12
     Width = 144
-    OnChange = LogBaseChange
     TabOrder = 7
     Value = 10
+    OnChange = LogBaseChange
   end
   object Label4: TLabel
     Left = 216
@@ -117,6 +117,32 @@ object ChartOptionsForm: TChartOptionsForm
     Caption = 'Marks at data only'
     TabOrder = 8
     OnChange = AtDataOnlyChange
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 25
+    Top = 374
+    Width = 118
+    Caption = 'Chart BG color:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object GChartBGColor: TColorBox
+    Left = 148
+    Height = 30
+    Top = 368
+    Width = 284
+    DefaultColorColor = clWhite
+    Selected = clWhite
+    Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbCustomColors]
+    DropDownCount = 10
+    ItemHeight = 24
+    TabOrder = 9
+    OnChange = GChartBGColorChange
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

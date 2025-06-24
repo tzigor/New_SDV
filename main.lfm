@@ -3,20 +3,20 @@ object App: TApp
   Height = 999
   Top = -816
   Width = 2146
-  Caption = 'Smart Data Viewer v2.3.1'
+  Caption = 'Smart Data Viewer v2.3.2'
   ClientHeight = 999
   ClientWidth = 2146
   Color = clWhite
   DesignTimePPI = 144
+  SessionProperties = 'ExtHint.Checked;GChartBGColor.Selected;GLineStyleBox.PenStyle;GLineWidthBox.PenWidth;GPointerStyleBox.PointerStyle;GPointSizeBox.ItemIndex;HorLineColor.Selected;HorLineStyle.PenStyle;HorLineWidth.PenWidth;LabelColor.Selected;StartChartsFrom.Date;VertLineColor.Selected;VertLineStyle.PenStyle;VertLineWidth.PenWidth;DateTimeFormat.Text'
+  LCLVersion = '4.0.0.4'
+  WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnDropFiles = FormDropFiles
   OnKeyDown = FormKeyDown
   OnResize = FormResize
-  SessionProperties = 'ExtHint.Checked;GChartBGColor.Selected;GLineStyleBox.PenStyle;GLineWidthBox.PenWidth;GPointerStyleBox.PointerStyle;GPointSizeBox.ItemIndex;HorLineColor.Selected;HorLineStyle.PenStyle;HorLineWidth.PenWidth;LabelColor.Selected;StartChartsFrom.Date;VertLineColor.Selected;VertLineStyle.PenStyle;VertLineWidth.PenWidth;DateTimeFormat.Text'
-  LCLVersion = '3.8.0.0'
-  WindowState = wsMaximized
   object PageControl1: TPageControl
     Left = 0
     Height = 999
@@ -45,9 +45,9 @@ object App: TApp
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
-        OnClick = CloseAppClick
         ParentFont = False
         TabOrder = 0
+        OnClick = CloseAppClick
       end
       object ProcessProgress: TProgressBar
         Left = 144
@@ -74,7 +74,6 @@ object App: TApp
         Hint = 'Show labels'
         Top = 4
         Width = 38
-        OnClick = HideLabelClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869637905000089504E47
@@ -124,6 +123,7 @@ object App: TApp
           6520372E30B0E96D7E0000000049454E44AE426082
         }
         ShowHint = True
+        OnClick = HideLabelClick
       end
       object ChartPoints: TCheckBox
         Left = 624
@@ -153,7 +153,6 @@ object App: TApp
         Hint = 'Open file'
         Top = 4
         Width = 34
-        OnClick = OpenFileClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B47726170686963C303000089504E47
@@ -190,6 +189,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = OpenFileClick
       end
       object AddChart: TImage
         Left = 60
@@ -197,7 +197,6 @@ object App: TApp
         Hint = 'Add chart'
         Top = 4
         Width = 38
-        OnClick = AddChartClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B47726170686963E203000089504E47
@@ -235,6 +234,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = AddChartClick
       end
       object ShowLabel: TImage
         Left = 516
@@ -242,7 +242,6 @@ object App: TApp
         Hint = 'Hide labels'
         Top = 4
         Width = 38
-        OnClick = ShowLabelClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869631504000089504E47
@@ -282,6 +281,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = ShowLabelClick
       end
       object Panel1: TPanel
         Left = 120
@@ -303,7 +303,6 @@ object App: TApp
           Hint = 'Drag zoom'
           Top = 2
           Width = 38
-          OnClick = ZoomOffClick
           ParentShowHint = False
           Picture.Data = {
             1754506F727461626C654E6574776F726B477261706869632403000089504E47
@@ -335,6 +334,7 @@ object App: TApp
           }
           ShowHint = True
           Stretch = True
+          OnClick = ZoomOffClick
         end
         object PanOff: TImage
           Left = 44
@@ -342,7 +342,6 @@ object App: TApp
           Hint = 'Pan'
           Top = 2
           Width = 38
-          OnClick = PanOffClick
           ParentShowHint = False
           Picture.Data = {
             1754506F727461626C654E6574776F726B47726170686963F402000089504E47
@@ -373,6 +372,7 @@ object App: TApp
           }
           ShowHint = True
           Stretch = True
+          OnClick = PanOffClick
         end
         object ZoomOn: TImage
           Left = 2
@@ -468,7 +468,6 @@ object App: TApp
           Hint = 'Distance X axis'
           Top = 2
           Width = 38
-          OnClick = DistanceXOffClick
           ParentShowHint = False
           Picture.Data = {
             1754506F727461626C654E6574776F726B477261706869636402000089504E47
@@ -494,6 +493,7 @@ object App: TApp
           }
           ShowHint = True
           Stretch = True
+          OnClick = DistanceXOffClick
         end
         object DistanceXOn: TImage
           Left = 86
@@ -538,7 +538,6 @@ object App: TApp
           Hint = 'Distance Y axis'
           Top = 2
           Width = 38
-          OnClick = DistanceYOffClick
           ParentShowHint = False
           Picture.Data = {
             1754506F727461626C654E6574776F726B477261706869635802000089504E47
@@ -564,6 +563,7 @@ object App: TApp
           }
           ShowHint = True
           Stretch = True
+          OnClick = DistanceYOffClick
         end
         object DistanceYOn: TImage
           Left = 128
@@ -607,7 +607,6 @@ object App: TApp
           Hint = 'Cut range of a curve'
           Top = 2
           Width = 38
-          OnClick = CutZoneOffClick
           ParentShowHint = False
           Picture.Data = {
             1754506F727461626C654E6574776F726B47726170686963F801000089504E47
@@ -630,6 +629,7 @@ object App: TApp
           }
           ShowHint = True
           Stretch = True
+          OnClick = CutZoneOffClick
         end
         object CutZoneOn: TImage
           Left = 170
@@ -670,7 +670,6 @@ object App: TApp
         Top = 4
         Width = 38
         AntialiasingMode = amOff
-        OnClick = FitYClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869635903000089504E47
@@ -704,6 +703,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = FitYClick
       end
       object FitX: TImage
         Left = 408
@@ -711,7 +711,6 @@ object App: TApp
         Hint = 'Fit X'
         Top = 4
         Width = 38
-        OnClick = FitXClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869637003000089504E47
@@ -746,6 +745,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = FitXClick
       end
       object FitXY: TImage
         Left = 360
@@ -753,7 +753,6 @@ object App: TApp
         Hint = 'Fit XY'
         Top = 4
         Width = 38
-        OnClick = FitXYClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869635304000089504E47
@@ -795,6 +794,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = FitXYClick
       end
       object ExtHint: TCheckBox
         Left = 756
@@ -3112,7 +3112,6 @@ object App: TApp
         Top = 923
         Width = 38
         Anchors = [akRight, akBottom]
-        OnClick = ScreenShotClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B47726170686963FE05000089504E47
@@ -3167,6 +3166,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = ScreenShotClick
       end
       object ScreenShotFlash: TImage
         Left = 1822
@@ -3345,7 +3345,6 @@ object App: TApp
         Hint = 'Remove labels'
         Top = 4
         Width = 38
-        OnClick = RemoveLabelsBtnClick
         ParentShowHint = False
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869637B04000089504E47
@@ -3388,6 +3387,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = RemoveLabelsBtnClick
       end
       object ByTymeCh: TRadioButton
         Left = 954
@@ -3414,7 +3414,6 @@ object App: TApp
         Top = 923
         Width = 42
         Anchors = [akRight, akBottom]
-        OnClick = CloseChartsClick
         ParentShowHint = False
         Picture.Data = {
           07544269746D61703E0A0000424D3E0A0000000000007A0000006C0000001900
@@ -3503,6 +3502,7 @@ object App: TApp
         }
         ShowHint = True
         Stretch = True
+        OnClick = CloseChartsClick
       end
       object Calculator: TImage
         Left = 1776
@@ -3510,7 +3510,6 @@ object App: TApp
         Top = 921
         Width = 38
         Anchors = [akRight, akBottom]
-        OnClick = CalculatorClick
         Picture.Data = {
           1754506F727461626C654E6574776F726B477261706869632006000089504E47
           0D0A1A0A0000000D4948445200000019000000190806000000C4E98563000000
@@ -3564,6 +3563,7 @@ object App: TApp
           766572204672656520372E30B0E96D7E0000000049454E44AE426082
         }
         Stretch = True
+        OnClick = CalculatorClick
       end
       object ShowLegendSw: TCheckBox
         Left = 1692
@@ -3640,10 +3640,10 @@ object App: TApp
         Anchors = [akLeft, akBottom]
         MaxValue = 50
         MinValue = 5
-        OnChange = PointerSizeChange
         TabOrder = 20
         Value = 5
         Visible = False
+        OnChange = PointerSizeChange
       end
       object SizeLbl: TLabel
         Left = 1155
@@ -3775,8 +3775,8 @@ object App: TApp
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbCustomColors]
           DropDownCount = 10
           ItemHeight = 24
-          OnChange = GChartBGColorChange
           TabOrder = 2
+          OnChange = GChartBGColorChange
         end
       end
       object GroupBox3: TGroupBox
@@ -3865,8 +3865,8 @@ object App: TApp
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbCustomColors]
           DropDownCount = 10
           ItemHeight = 24
-          OnChange = GChartBGColorChange
           TabOrder = 2
+          OnChange = GChartBGColorChange
         end
       end
       object GroupBox4: TGroupBox
@@ -3910,8 +3910,8 @@ object App: TApp
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbCustomColors]
           DropDownCount = 10
           ItemHeight = 24
-          OnChange = GChartBGColorChange
           TabOrder = 1
+          OnChange = GChartBGColorChange
         end
       end
       object GroupBox5: TGroupBox
@@ -3981,8 +3981,8 @@ object App: TApp
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbCustomColors]
           DropDownCount = 10
           ItemHeight = 24
-          OnChange = GChartBGColorChange
           TabOrder = 0
+          OnChange = GChartBGColorChange
         end
         object Label2: TLabel
           Left = 12

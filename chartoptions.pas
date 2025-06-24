@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
-  IniPropStorage, TAGraph, TACustomSource;
+  IniPropStorage, ColorBox, TAGraph, TACustomSource;
 
 type
 
@@ -15,8 +15,10 @@ type
   TChartOptionsForm = class(TForm)
     Button1: TButton;
     AtDataOnly: TCheckBox;
+    GChartBGColor: TColorBox;
     IniPropStorage1: TIniPropStorage;
     Label4: TLabel;
+    Label5: TLabel;
     LogBase: TFloatSpinEdit;
     YInvertedChk: TCheckBox;
     Label1: TLabel;
@@ -29,6 +31,7 @@ type
     IntervalCount: TSpinEdit;
     procedure AtDataOnlyChange(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure GChartBGColorChange(Sender: TObject);
     procedure IntervalCountChange(Sender: TObject);
     procedure LogarithmicChkChange(Sender: TObject);
     procedure LogBaseChange(Sender: TObject);
@@ -57,6 +60,11 @@ uses
 procedure TChartOptionsForm.Button1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TChartOptionsForm.GChartBGColorChange(Sender: TObject);
+begin
+  GetChart(SelectedChart).BackColor:= ChartOptionsForm.GChartBGColor.Selected;
 end;
 
 procedure TChartOptionsForm.AtDataOnlyChange(Sender: TObject);
