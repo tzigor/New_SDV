@@ -1,15 +1,15 @@
 object App: TApp
-  Left = 3988
+  Left = 3956
   Height = 999
-  Top = -816
+  Top = -883
   Width = 2146
-  Caption = 'Smart Data Viewer v2.3.2'
+  Caption = 'Smart Data Viewer v2.3.5'
   ClientHeight = 999
   ClientWidth = 2146
   Color = clWhite
   DesignTimePPI = 144
   SessionProperties = 'ExtHint.Checked;GChartBGColor.Selected;GLineStyleBox.PenStyle;GLineWidthBox.PenWidth;GPointerStyleBox.PointerStyle;GPointSizeBox.ItemIndex;HorLineColor.Selected;HorLineStyle.PenStyle;HorLineWidth.PenWidth;LabelColor.Selected;StartChartsFrom.Date;VertLineColor.Selected;VertLineStyle.PenStyle;VertLineWidth.PenWidth;DateTimeFormat.Text'
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.2.0.0'
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
@@ -123,6 +123,7 @@ object App: TApp
           6520372E30B0E96D7E0000000049454E44AE426082
         }
         ShowHint = True
+        Stretch = True
         OnClick = HideLabelClick
       end
       object ChartPoints: TCheckBox
@@ -2448,6 +2449,7 @@ object App: TApp
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Top = 9
           Color = clWhite
+          DoubleBuffered = True
           OnClick = Chart1Click
           OnDblClick = Chart1DblClick
           OnDragDrop = Chart1DragDrop
@@ -4105,6 +4107,18 @@ object App: TApp
           OnChange = ColorsSyncChange
         end
       end
+      object Memo1: TMemo
+        Left = 992
+        Height = 751
+        Top = 32
+        Width = 417
+        Lines.Strings = (
+          'v2.3.2 - Fast Mode bug fixed'
+          'v2.3.3 - Zoom by middle mouse button added'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 5
+      end
     end
   end
   object OpenDialog: TOpenDialog
@@ -4121,7 +4135,7 @@ object App: TApp
     Top = 876
   end
   object ChartToolset1: TChartToolset
-    Left = 804
+    Left = 800
     Top = 878
     object ChartToolset1ZoomMouseWheelTool1: TZoomMouseWheelTool
       Shift = [ssAlt]
@@ -4210,6 +4224,10 @@ object App: TApp
       PointerStart.VertSize = 5000
       PointerStart.Visible = True
       OnMeasure = AllocateAreaMeasure
+    end
+    object ChartToolset1ZoomDragTool2: TZoomDragTool
+      Shift = [ssMiddle]
+      Brush.Style = bsClear
     end
   end
   object ChartExtentLink1: TChartExtentLink

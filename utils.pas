@@ -192,7 +192,7 @@ end;
 
 function SWHint(SW: Integer; SWDescr: array of String; DT: TDateTime): String;
 var i: Byte;
-    wStr: String;
+    wStr: String = '';
 begin
    wStr:= wStr + 'Value - ' + IntToStr(SW) + #13#10;
    for i:=0 to 15 do
@@ -409,6 +409,59 @@ begin
      'f8', 'i8', 'u8' : Result:= 8;
    end;
 end;
+
+var
+SerieCopy : array of Double;
+
+procedure SaveSerie(Serie: TLineSeries);
+begin
+  //Serie.
+end;
+
+
+//function MedianFilter(const Data: TDataArray; Index: Integer): Double;
+//var
+//  Window: array[1..WINDOW_SIZE] of Double;
+//  i, j, HalfWindow: Integer;
+//  Temp: Double;
+//begin
+//  HalfWindow := WINDOW_SIZE div 2;
+//
+//  // Заполняем окно значениями
+//  for i := 1 to WINDOW_SIZE do
+//  begin
+//    j := Index - HalfWindow + i - 1;
+//    // Обработка граничных условий
+//    if j < 1 then j := 1;
+//    if j > N then j := N;
+//    Window[i] := Data[j];
+//  end;
+//
+//  // Сортировка окна (пузырьковая)
+//  for i := 1 to WINDOW_SIZE-1 do
+//    for j := 1 to WINDOW_SIZE-i do
+//      if Window[j] > Window[j+1] then
+//      begin
+//        Temp := Window[j];
+//        Window[j] := Window[j+1];
+//        Window[j+1] := Temp;
+//      end;
+//
+//  // Возвращаем медиану
+//  Result := Window[WINDOW_SIZE div 2 + 1];
+//end;
+//
+//// Процедура фильтрации всего массива
+//procedure ApplyFilter(const InputData: TDataArray; var OutputData: TDataArray);
+//var
+//  i: Integer;
+//begin
+//  for i := 1 to N do
+//    OutputData[i] := MedianFilter(InputData, i);
+//end;
+
+
+
 
 end.
 

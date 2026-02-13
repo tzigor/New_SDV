@@ -1,13 +1,13 @@
 object NavigationForm: TNavigationForm
-  Left = 4939
+  Left = 4940
   Height = 275
-  Top = -551
+  Top = -549
   Width = 993
   Caption = 'Navigator'
   ClientHeight = 275
   ClientWidth = 993
   DesignTimePPI = 144
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.2.0.0'
   object ChartNavPanel1: TChartNavPanel
     Left = 0
     Height = 275

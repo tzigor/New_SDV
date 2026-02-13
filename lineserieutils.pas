@@ -38,6 +38,7 @@ function GetLinesCount(): Byte;
 procedure RemoveLineLabels(Serie: TLineSeries);
 function GetSerieName(Serie: TLineSeries): String;
 procedure SerieShiftTime(Serie : TLineSeries; Hrs, Mins, Secs: Integer);
+procedure DotMode(ModeOn: Boolean);
 
 implementation
 uses Main;
@@ -118,6 +119,23 @@ var i, j : Byte;
 begin
   for i:= 1 to MAX_CHART_NUMBER do
     for j:= 1 to MAX_SERIE_NUMBER do GetLineSerie(i, j).Pointer.Visible:= Visible;
+end;
+
+procedure DotMode(ModeOn: Boolean);
+var i, j  : Byte;
+    Serie : TLineSeries;
+begin
+  for i:= 1 to MAX_CHART_NUMBER do
+    for j:= 1 to MAX_SERIE_NUMBER do
+       if ModeOn then begin
+         App.ChartPoints.Checked:= True;
+         Serie:= GetLineSerie(i, j);
+         Serie.ShowLines:= False;
+         Serie.Pointer.Visible:= True;
+         Serie.Pointer.VertSize:= 1;
+         Serie.Pointer.HorizSize:= 1;
+       end
+       else SetLineSeriesStyle();
 end;
 
 function GetLineSerie(ChartNumber, LineSerieNumber: Byte): TLineSeries;

@@ -1,7 +1,7 @@
 object ShowChannelForm: TShowChannelForm
-  Left = 4819
+  Left = 5065
   Height = 1063
-  Top = -922
+  Top = -860
   Width = 582
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Channels'
@@ -13,10 +13,10 @@ object ShowChannelForm: TShowChannelForm
   DefaultMonitor = dmMainForm
   DesignTimePPI = 144
   FormStyle = fsStayOnTop
-  OnCreate = FormCreate
   Position = poMainFormCenter
   SessionProperties = 'DockedToMain.Checked;MultiColumns.Checked'
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.2.0.0'
+  OnCreate = FormCreate
   object CloseList: TBitBtn
     Left = 458
     Height = 38
@@ -24,8 +24,8 @@ object ShowChannelForm: TShowChannelForm
     Width = 112
     Anchors = [akRight, akBottom]
     Caption = 'Close'
-    OnClick = CloseListClick
     TabOrder = 0
+    OnClick = CloseListClick
   end
   object DrawBtn: TBitBtn
     Left = 12
@@ -34,8 +34,8 @@ object ShowChannelForm: TShowChannelForm
     Width = 100
     Anchors = [akLeft, akBottom]
     Caption = 'Draw'
-    OnClick = DrawBtnClick
     TabOrder = 1
+    OnClick = DrawBtnClick
   end
   object FileList: TListBox
     Left = 12
@@ -77,9 +77,9 @@ object ShowChannelForm: TShowChannelForm
     Frequency = 100
     Max = 100
     Min = 2
-    OnChange = RecordsNumberChange
     PageSize = 100
     Position = 10
+    OnChange = RecordsNumberChange
     Anchors = [akTop, akLeft, akRight]
     TabOrder = 5
   end
@@ -216,7 +216,6 @@ object ShowChannelForm: TShowChannelForm
     Top = 1016
     Width = 38
     Anchors = [akLeft, akBottom]
-    OnClick = Image1Click
     ParentShowHint = False
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869631003000089504E47
@@ -248,6 +247,7 @@ object ShowChannelForm: TShowChannelForm
     }
     ShowHint = True
     Stretch = True
+    OnClick = Image1Click
   end
   object Image2: TImage
     Left = 328
@@ -256,7 +256,6 @@ object ShowChannelForm: TShowChannelForm
     Top = 1016
     Width = 38
     Anchors = [akLeft, akBottom]
-    OnClick = Image2Click
     ParentShowHint = False
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869630303000089504E47
@@ -287,6 +286,7 @@ object ShowChannelForm: TShowChannelForm
     }
     ShowHint = True
     Stretch = True
+    OnClick = Image2Click
   end
   object Image3: TImage
     Left = 376
@@ -295,7 +295,6 @@ object ShowChannelForm: TShowChannelForm
     Top = 1016
     Width = 38
     Anchors = [akLeft, akBottom]
-    OnClick = Image3Click
     ParentShowHint = False
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869631704000089504E47
@@ -335,6 +334,7 @@ object ShowChannelForm: TShowChannelForm
     }
     ShowHint = True
     Stretch = True
+    OnClick = Image3Click
   end
   object PrintToCSVbtn: TButton
     Left = 168
@@ -344,6 +344,14 @@ object ShowChannelForm: TShowChannelForm
     Caption = 'Print to CSV'
     TabOrder = 10
     OnClick = PrintToCSVbtnClick
+  end
+  object BHPtoPSI: TCheckBox
+    Left = 304
+    Height = 29
+    Top = 267
+    Width = 110
+    Caption = 'BHP to PSI'
+    TabOrder = 11
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <    

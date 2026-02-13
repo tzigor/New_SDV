@@ -1,7 +1,7 @@
 object HorLineForm: THorLineForm
-  Left = 5470
+  Left = 4155
   Height = 324
-  Top = -773
+  Top = -783
   Width = 447
   BorderIcons = [biSystemMenu]
   Caption = 'Horizontal Line Options'
@@ -12,9 +12,9 @@ object HorLineForm: THorLineForm
   Constraints.MinHeight = 324
   Constraints.MinWidth = 447
   DesignTimePPI = 144
-  OnHide = FormHide
   Position = poMainFormCenter
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.2.0.0'
+  OnHide = FormHide
   object GroupBox1: TGroupBox
     Left = 12
     Height = 192
@@ -97,8 +97,8 @@ object HorLineForm: THorLineForm
       ColorDialog = ColorDialog1
       DropDownCount = 10
       ItemHeight = 24
-      OnChange = SerieColorBoxChange
       TabOrder = 2
+      OnChange = SerieColorBoxChange
     end
   end
   object CancelBtn: TButton
@@ -137,8 +137,8 @@ object HorLineForm: THorLineForm
     Height = 33
     Top = 213
     Width = 171
-    OnChange = HorLineValueChange
     TabOrder = 3
+    OnChange = HorLineValueChange
   end
   object ColorDialog1: TColorDialog
     Color = clBlack

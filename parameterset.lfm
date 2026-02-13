@@ -1,7 +1,7 @@
 object ParamSetFrm: TParamSetFrm
-  Left = 4491
+  Left = 4709
   Height = 610
-  Top = -671
+  Top = -788
   Width = 291
   BorderIcons = [biSystemMenu]
   Caption = 'Parameter set'
@@ -14,7 +14,7 @@ object ParamSetFrm: TParamSetFrm
   Constraints.MinWidth = 291
   DesignTimePPI = 144
   Position = poMainFormCenter
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.2.0.0'
   object ParamSetList: TListBox
     Left = 9
     Height = 468
@@ -82,9 +82,9 @@ object ParamSetFrm: TParamSetFrm
       FD0300000000FDFDFE01CECEE241B6B6D466FAFAFC0500000000000000000000
       00000000000000000000FCFCFD02BBBBDB54BABADA53FCFCFD0300000000
     }
-    OnClick = DeleteSetClick
     ParentFont = False
     TabOrder = 2
+    OnClick = DeleteSetClick
   end
   object LoadSet: TButton
     Left = 9

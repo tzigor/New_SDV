@@ -7,8 +7,8 @@ interface
 uses
   Classes, SysUtils, UserTypes, TASeries, TAGraph, Controls, TATypes, LCLType,
   TAChartUtils, DateUtils, StrUtils, Forms, Dialogs, SIBRParam, uComplex,
-  Math, ExtCtrls, Graphics, TAChartAxis, TACustomSource,
-  TATransformations;
+  Math, ExtCtrls, Graphics, TAChartAxis, TACustomSource, TATransformations,
+  TAChartAggPas;
 
 procedure DrawSerie(LineSerie: TLineSeries; SelectedSource, SelectedParam: Word; Name: String);
 procedure ChartsVisible(visible: Boolean);
@@ -63,6 +63,7 @@ var Offset : Word;
     U2     : Word;
     I4     : LongInt;
     U4     : LongWord;
+    U8     : QWord;
     F4     : Single;
     F8     : Double;
 
@@ -80,9 +81,10 @@ begin
                  else Value:= F4;
           end;
     'F8': begin
-            Move(Bytes[DataOffset], F8, 8);
+            Move(Frame.Data[Offset], F8, 8);
             if IsNan(F8) then Result:= False
-            else if (F8 = -999.25) Or (F4 = Nan) or (F4 = +infinity) or (F4 = -infinity) then Result:= False
+            //else if (F8 = -999.25) Or (F4 = Nan) or (F8 = +infinity) or (F8 = -infinity) then Result:= False
+            else if (F8 = -999.25) then Result:= False
                  else Value:= F8;
           end;
     'I1': begin
@@ -109,6 +111,11 @@ begin
              Move(Frame.Data[Offset], U4, 4);
              if (U4 = 4294967295) then Result:= False
              else Value:= U4;
+          end;
+    'U8': begin
+             Move(Frame.Data[Offset], U8, 8);
+             if (U8 = 4294967295) then Result:= False
+             else Value:= U8;
           end;
     'I4': begin
             Move(Frame.Data[Offset], I4, 4);
@@ -181,7 +188,7 @@ begin
 
   ValidValue:= True;
   for i:=0 to FramesCount - 1 do begin
-    if (i Mod FastModeDivider) = 0 then
+    if (i Mod FastModeDivider) = 0 then begin
 
       if Name in CondChannels then Value:= GetSonde(SelectedSource, Name, i)
       else if Name in CondCompChannels then Value:= GetCompSonde(SelectedSource, Name, i)
@@ -207,16 +214,19 @@ begin
            end;
 
       if ValidValue then begin
+             if ShowChannelForm.FastMode.Checked then FastModeDivider:= ShowChannelForm.RecordsNumber.Position;
              if App.ByTymeCh.Checked then begin
                 if (DataSources[SelectedSource].FrameRecords[i].DateTime >= App.StartChartsFrom.DateTime) And
                    (DataSources[SelectedSource].FrameRecords[i].DateTime <= App.EndPoint.DateTime) then begin
                    if (DataSources[SelectedSource].FrameRecords[i].DateTime >= PrevDateTime) Or Not App.RTCBugs.Checked then begin
                       if (Value <> +infinity) And (Value <> -infinity) And (Value <> ParameterError)then begin
                          if DataSources[SelectedSource].FrameRecords[i].DateTime = PrevDateTime then begin
+                            if (Name = 'BHP') And (ShowChannelForm.BHPtoPSI.Checked) then Value:= Value * 14.696;
                             LineSerie.AddXY(IncMilliSecond(DataSources[SelectedSource].FrameRecords[i].DateTime, AddMilliSeconds), Value, Sticker);
                             Inc(AddMilliSeconds, 200)
                          end
                          else begin
+                            if (Name = 'BHP') And (ShowChannelForm.BHPtoPSI.Checked) then Value:= Value * 14.696;
                             LineSerie.AddXY(DataSources[SelectedSource].FrameRecords[i].DateTime, Value, Sticker);
                             AddMilliSeconds:= 200;
                          end;
@@ -234,7 +244,10 @@ begin
                 LineSerie.AddXY(DotNumber, Value);
                 Inc(DotNumber);
              end;
-      end;
+      end
+      else
+        FastModeDivider:= 1;
+    end;
 
     n:= Trunc(i * 100 / FramesCount);
     if (n > iPrevPercent) then begin
@@ -687,6 +700,7 @@ procedure RemoveAllLabels();
 var i: Integer;
 begin
   for i:=1 to MAX_CHART_NUMBER do RemoveChartLabels(GetChart(i));
+  RepaintAll();
 end;
 
 function GetLogarithmTransform(ChartNubmber: Byte): TLogarithmAxisTransform;

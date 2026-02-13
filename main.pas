@@ -22,8 +22,10 @@ type
   TApp = class(TForm)
     AllocateArea: TDataPointDistanceTool;
     AnalyzeBtn: TButton;
+    ChartToolset1ZoomDragTool2: TZoomDragTool;
     InvertedCh: TCheckBox;
     Image1: TImage;
+    Memo1: TMemo;
     SaveResultBtn: TButton;
     FindPacketBtn: TButton;
     Calculator: TImage;
@@ -388,6 +390,10 @@ var
   ConfiguredTools    : TStringList;
 
   ChartDeleted       : Boolean = False;
+
+  { Median filter }
+  const
+  WINDOW_SIZE        : Word = 5;
 
   procedure OpenChannelForm();
   procedure PrepareChannelForm();

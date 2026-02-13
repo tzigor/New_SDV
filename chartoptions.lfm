@@ -1,7 +1,7 @@
 object ChartOptionsForm: TChartOptionsForm
-  Left = 4869
+  Left = 5697
   Height = 478
-  Top = -600
+  Top = -755
   Width = 480
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -11,7 +11,7 @@ object ChartOptionsForm: TChartOptionsForm
   Color = clWhite
   DesignTimePPI = 144
   SessionProperties = 'LogBase.Value;IntervalCount.Value'
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.2.0.0'
   object Button1: TButton
     Left = 344
     Height = 38

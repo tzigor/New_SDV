@@ -122,13 +122,13 @@ end;
 function GetCompSonde(SelectedSource: Word; Param: String; n: Integer): Double;
 begin
    case Param of
-     // Abs removed
-     'A16L_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[1,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[1,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[1,3]);
-     'A22L_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[2,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[2,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[2,3]);
-     'A34L_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[3,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[3,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[3,3]);
-     'A16H_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[1,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[1,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[1,3]);
-     'A22H_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[2,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[2,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[2,3]);
-     'A34H_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[3,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[3,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[3,3]);
+     // Asb removed
+     'A16L_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[1,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[1,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[1,3]);
+     'A22L_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[2,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[2,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[2,3]);
+     'A34L_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16L_UNC' ,n)*a[3,1]+GetSonde(SelectedSource, 'A22L_UNC', n)*a[3,2]+GetSonde(SelectedSource, 'A34L_UNC', n)*a[3,3]);
+     'A16H_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[1,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[1,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[1,3]);
+     'A22H_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[2,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[2,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[2,3]);
+     'A34H_COMP': GetCompSonde:= Abs(GetSonde(SelectedSource, 'A16H_UNC' ,n)*a[3,1]+GetSonde(SelectedSource, 'A22H_UNC', n)*a[3,2]+GetSonde(SelectedSource, 'A34H_UNC', n)*a[3,3]);
 
      'P16L_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'P16L_UNC' ,n)*a[1,1]+GetSonde(SelectedSource, 'P22L_UNC', n)*a[1,2]+GetSonde(SelectedSource, 'P34L_UNC', n)*a[1,3]);
      'P22L_COMP': GetCompSonde:= (GetSonde(SelectedSource, 'P16L_UNC' ,n)*a[2,1]+GetSonde(SelectedSource, 'P22L_UNC', n)*a[2,2]+GetSonde(SelectedSource, 'P34L_UNC', n)*a[2,3]);

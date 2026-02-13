@@ -1,7 +1,7 @@
 object ParamOptionsForm: TParamOptionsForm
-  Left = 5037
+  Left = 4115
   Height = 650
-  Top = -438
+  Top = -349
   Width = 444
   BorderIcons = []
   BorderStyle = bsDialog
@@ -10,9 +10,9 @@ object ParamOptionsForm: TParamOptionsForm
   ClientWidth = 444
   DesignTimePPI = 144
   FormStyle = fsStayOnTop
-  OnHide = FormHide
   Position = poMainFormCenter
-  LCLVersion = '3.8.0.0'
+  LCLVersion = '4.2.0.0'
+  OnHide = FormHide
   object OkBtn: TButton
     Left = 320
     Height = 38
@@ -62,8 +62,8 @@ object ParamOptionsForm: TParamOptionsForm
       ColorDialog = ColorDialog1
       DropDownCount = 10
       ItemHeight = 24
-      OnChange = LineColorBoxChange
       TabOrder = 0
+      OnChange = LineColorBoxChange
     end
     object Label2: TLabel
       Left = 12
@@ -148,8 +148,8 @@ object ParamOptionsForm: TParamOptionsForm
       ColorDialog = ColorDialog1
       DropDownCount = 10
       ItemHeight = 24
-      OnChange = PointerColorBoxChange
       TabOrder = 0
+      OnChange = PointerColorBoxChange
     end
     object Label5: TLabel
       Left = 12

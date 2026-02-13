@@ -15,6 +15,7 @@ type
   { TShowChannelForm }
 
   TShowChannelForm = class(TForm)
+    BHPtoPSI: TCheckBox;
     PrintToCSVbtn: TButton;
     Image1: TImage;
     Image2: TImage;
