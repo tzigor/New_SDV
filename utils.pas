@@ -27,6 +27,7 @@ procedure SetNavigation(NavMode: Byte);
 procedure SetFastMode(Value: Boolean);
 function Expon2(n: Integer): Integer;
 procedure MakeScreenShot();
+procedure SaveScreenShot();
 function AddLidZeros(S: String; N: Byte): String;
 function StrInArray(Value: String; Arr: array of String): Boolean;
 function GetParamPosition(Param: String): Integer;
@@ -317,6 +318,25 @@ begin
     Bitmap.SetSize(App.ChartScrollBox.Width, App.ChartScrollBox.Height);
     Bitmap.Canvas.CopyRect(R, App.ChartScrollBox.Canvas, R);
     Clipboard.Assign(Bitmap);
+  finally
+    Bitmap.Free;
+  end;
+end;
+
+procedure SaveScreenShot();
+var
+  R: TRect;
+  Bitmap: TBitmap;
+begin
+  Bitmap := TBitmap.Create;
+  try
+    R := Rect(0, 0, App.ChartScrollBox.Width, App.ChartScrollBox.Height);
+    Bitmap.SetSize(App.ChartScrollBox.Width, App.ChartScrollBox.Height);
+    Bitmap.Canvas.CopyRect(R, App.ChartScrollBox.Canvas, R);
+    App.SaveDialog1.FileName:= 'Screeshot.jpg';
+    if App.SaveDialog1.Execute then begin
+       Bitmap.SaveToFile(App.SaveDialog1.FileName);
+    end;
   finally
     Bitmap.Free;
   end;

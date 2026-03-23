@@ -23,9 +23,11 @@ type
     AllocateArea: TDataPointDistanceTool;
     AnalyzeBtn: TButton;
     ChartToolset1ZoomDragTool2: TZoomDragTool;
+    SaveScreenshotBtn: TImage;
     InvertedCh: TCheckBox;
     Image1: TImage;
     Memo1: TMemo;
+    RemoveSpikes: TMenuItem;
     SaveResultBtn: TButton;
     FindPacketBtn: TButton;
     Calculator: TImage;
@@ -292,7 +294,9 @@ type
     procedure PanOffClick(Sender: TObject);
     procedure PointerSizeChange(Sender: TObject);
     procedure RemoveLabelsBtnClick(Sender: TObject);
+    procedure RemoveSpikesClick(Sender: TObject);
     procedure SaveResultBtnClick(Sender: TObject);
+    procedure SaveScreenshotBtnClick(Sender: TObject);
     procedure SaveToJPEGClick(Sender: TObject);
     procedure ScreenShotClick(Sender: TObject);
     procedure ShowLabelClick(Sender: TObject);
@@ -773,6 +777,12 @@ begin
   RemoveAllLabels();
 end;
 
+procedure TApp.RemoveSpikesClick(Sender: TObject);
+begin
+  MedianFilter(OnHintSerie, 3);
+  App.FitYClick(Sender);
+end;
+
 procedure TApp.SaveResultBtnClick(Sender: TObject);
 var
   FName, wStr : String;
@@ -805,6 +815,12 @@ begin
       ShowMessage('Saved.');
     end;
   end;
+end;
+
+procedure TApp.SaveScreenshotBtnClick(Sender: TObject);
+begin
+  Application.ProcessMessages;
+  SaveScreenshot();
 end;
 
 procedure TApp.SaveToJPEGClick(Sender: TObject);
@@ -1172,6 +1188,7 @@ begin
         OnHintLineType:= 0;
         MenuItem1.Enabled:= False;
         MenuItem6.Enabled:= False;
+        RemoveSpikes.Enabled:= False;
         AddVerticalLine.Enabled:= False;
         AddHorizontalLine.Enabled:= False;
         DeleteVertLine.Enabled:= False;
@@ -1201,6 +1218,7 @@ begin
                else AHint:= GetSticker(TLineSeries(ATool.Series), OnHintXPoint, OnHintYPoint);
      MenuItem1.Enabled:= True;
      MenuItem6.Enabled:= True;
+     RemoveSpikes.Enabled:= True;
      AddVerticalLine.Enabled:= True;
      AddHorizontalLine.Enabled:= True;
      LimitsItem.Enabled:= True;

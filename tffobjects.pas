@@ -14,7 +14,7 @@ type
      DataChannelSize : Word;
      NumberOfChannels: Word;
      TFFDataChannels : TTFFDataChannels;
-     CurrentOffset   : Word;
+     CurrentOffset   : QWord;
   public
      constructor Init;
      destructor Done;
@@ -47,7 +47,7 @@ type
      procedure AddData(Index: Word; Data: LongWord);
      procedure AddData(Index: Word; Data: QWord);
      procedure AddData(Index: Word; Data: Single);
-     procedure AddData(Index: Word; Data: Double);
+     procedure AddDataDouble(Index: Word; Data: Double);
   end;
 
 implementation
@@ -207,7 +207,7 @@ uses Main;
      if Index <> U2_RESULT_ERROR then Move(Data, FrameRecords[NumberOfRecords - 1].Data[Index], 4);
   end;
 
-  procedure TTffFrames.AddData(Index: Word; Data: Double);
+  procedure TTffFrames.AddDataDouble(Index: Word; Data: Double);
   begin
      if Index <> U2_RESULT_ERROR then Move(Data, FrameRecords[NumberOfRecords - 1].Data[Index], 8);
   end;
@@ -217,7 +217,8 @@ uses Main;
       NumOfChannels, i: Word;
   begin
     FrameRecord.DateTime:= DateTime;
-    SetLength(FrameRecord.Data, Size - 4); // minus 4 bytes for TIME
+    if CurrentTFFVersion = TFF_V40_F8 then SetLength(FrameRecord.Data, Size - 8) // minus 4 or 8 bytes for TIME
+    else SetLength(FrameRecord.Data, Size - 4);
     Insert(FrameRecord, FrameRecords, NumberOfRecords + 1);
     Inc(NumberOfRecords);
     NumOfChannels:= Length(TFFDataChannels);
@@ -229,7 +230,8 @@ uses Main;
           'u2': AddData(TFFDataChannels[i].Offset, 65535);
           'u4': AddData(TFFDataChannels[i].Offset, 4294967295);
           'i4': AddData(TFFDataChannels[i].Offset, 2147483647);
-          'f4', 'f8': AddData(TFFDataChannels[i].Offset, -999.25);
+          'f4': AddData(TFFDataChannels[i].Offset, -999.25);
+          'f8': AddDataDouble(TFFDataChannels[i].Offset, -999.25);
        end;
     end;
   end;

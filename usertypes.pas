@@ -89,7 +89,7 @@ Type
     RepCode     : String2;
     Samples     : String;
     AbsentValue : String;
-    Offset      : Word;
+    Offset      : QWord;
   end;
 
   TTFFDataChannels = array of TTFFDataChannel;

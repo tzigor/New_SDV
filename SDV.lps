@@ -19,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="144"/>
-        <CursorPos X="61" Y="9"/>
+        <TopLine Value="1758"/>
+        <CursorPos X="121" Y="332"/>
         <UsageCount Value="208"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -30,8 +30,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UserTypes"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="27"/>
-        <CursorPos X="107" Y="44"/>
+        <TopLine Value="77"/>
+        <CursorPos X="37" Y="92"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
       </Unit>
@@ -40,8 +40,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Utils"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="330"/>
-        <CursorPos X="14" Y="344"/>
+        <CursorPos X="47" Y="30"/>
         <UsageCount Value="207"/>
         <Loaded Value="True"/>
       </Unit>
@@ -49,18 +48,20 @@
         <Filename Value="tffobjects.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TffObjects"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="83"/>
-        <CursorPos Y="99"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="201"/>
+        <CursorPos X="50" Y="18"/>
         <UsageCount Value="201"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="parsebindb.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ParseBinDb"/>
         <EditorIndex Value="9"/>
-        <TopLine Value="154"/>
-        <CursorPos X="31" Y="140"/>
+        <TopLine Value="299"/>
+        <CursorPos Y="328"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit>
@@ -71,8 +72,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="10"/>
-        <TopLine Value="487"/>
-        <CursorPos X="55" Y="496"/>
+        <TopLine Value="274"/>
+        <CursorPos X="90" Y="298"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -81,9 +82,9 @@
         <Filename Value="lineserieutils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LineSerieUtils"/>
-        <EditorIndex Value="12"/>
-        <TopLine Value="113"/>
-        <CursorPos X="33" Y="133"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="14"/>
+        <CursorPos X="108" Y="37"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
       </Unit>
@@ -91,10 +92,9 @@
         <Filename Value="chartutils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ChartUtils"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="11"/>
-        <TopLine Value="212"/>
-        <CursorPos Y="249"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="152"/>
+        <CursorPos X="104" Y="172"/>
         <UsageCount Value="211"/>
         <Loaded Value="True"/>
       </Unit>
@@ -106,7 +106,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ParamOptions"/>
         <EditorIndex Value="7"/>
-        <CursorPos X="6" Y="144"/>
+        <CursorPos X="135" Y="15"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -127,9 +127,9 @@
         <Filename Value="sibrparam.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SIBRParam"/>
-        <EditorIndex Value="14"/>
-        <TopLine Value="103"/>
-        <CursorPos X="44" Y="123"/>
+        <EditorIndex Value="15"/>
+        <TopLine Value="23"/>
+        <CursorPos X="82" Y="41"/>
         <UsageCount Value="410"/>
         <Loaded Value="True"/>
       </Unit>
@@ -154,7 +154,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ParameterSet"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <TopLine Value="244"/>
         <CursorPos X="13" Y="38"/>
         <UsageCount Value="209"/>
@@ -165,7 +165,7 @@
         <Filename Value="parsecsv.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ParseCSV"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="16"/>
         <CursorPos X="14" Y="120"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
@@ -178,7 +178,6 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ChartOptions"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="65"/>
         <CursorPos X="35" Y="73"/>
         <UsageCount Value="486"/>
         <Loaded Value="True"/>
@@ -205,7 +204,6 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="LogicChannels"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="38"/>
         <CursorPos Y="66"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -216,23 +214,7 @@
         <UnitName Value="Graphics"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="14" Y="17"/>
-        <UsageCount Value="273"/>
-      </Unit>
-      <Unit>
-        <Filename Value="C:\lazarus\components\tachart\tacustomseries.pas"/>
-        <UnitName Value="TACustomSeries"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="970"/>
-        <CursorPos Y="984"/>
-        <UsageCount Value="104"/>
-      </Unit>
-      <Unit>
-        <Filename Value="C:\lazarus\components\tachart\tatools.pas"/>
-        <UnitName Value="TATools"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1268"/>
-        <CursorPos X="78" Y="1208"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="129"/>
       </Unit>
     </Units>
     <Debugger>
@@ -240,124 +222,124 @@
     </Debugger>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="218" TopLine="185"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="305" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="219" TopLine="186"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="306" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="220" TopLine="187"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="307" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="221" TopLine="188"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="308" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="222" TopLine="189"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="320" TopLine="287"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="223" TopLine="190"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="321" TopLine="288"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="229" TopLine="196"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="326" TopLine="293"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="230" TopLine="197"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="282" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="231" TopLine="198"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="283" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="234" TopLine="201"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="284" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="235" TopLine="202"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="285" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="240" TopLine="207"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="303" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="249" TopLine="229"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="304" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="252" TopLine="229"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="305" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="253" TopLine="229"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="306" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="190" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="307" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="191" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="308" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="252" TopLine="232"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="320" TopLine="287"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="253" TopLine="232"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="321" TopLine="288"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="190" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="326" TopLine="293"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="191" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="282" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="252" TopLine="232"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="283" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="190" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="284" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="191" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="285" TopLine="262"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="193" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="303" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="194" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="304" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="196" TopLine="170"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="305" TopLine="283"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="211" TopLine="191"/>
+        <Filename Value="tffobjects.pas"/>
+        <Caret Line="219" TopLine="10"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="210" TopLine="191"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="305" Column="39" TopLine="177"/>
       </Position>
       <Position>
-        <Filename Value="chartutils.pas"/>
-        <Caret Line="216" TopLine="191"/>
+        <Filename Value="parsebindb.pas"/>
+        <Caret Line="318" Column="73" TopLine="284"/>
       </Position>
     </JumpHistory>
     <RunParams>

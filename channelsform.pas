@@ -16,6 +16,7 @@ type
 
   TShowChannelForm = class(TForm)
     BHPtoPSI: TCheckBox;
+    FindBox: TEdit;
     PrintToCSVbtn: TButton;
     Image1: TImage;
     Image2: TImage;
@@ -48,6 +49,8 @@ type
       ARect: TRect; State: TOwnerDrawState);
     procedure FileListKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FileListSelectionChange(Sender: TObject; User: boolean);
+    procedure FindBoxChange(Sender: TObject);
+    procedure FindBoxClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -257,8 +260,8 @@ begin
          for j:=0 to Channels.Count - 1 do begin
             Name:= Channels[j];
 
-            if FindPart('AR???F', Name) > 0 then isAplitude:= True;
-            if FindPart('PR???F', Name) > 0 then isPhaseShift:= True;
+            if (FindPart('AR???F', Name) > 0) And IsSIBR then isAplitude:= True;
+            if (FindPart('PR???F', Name) > 0) And IsSIBR then isPhaseShift:= True;
 
             if isAplitude Or isPhaseShift then begin
                 numParam:= NameToInt(Name);
@@ -455,6 +458,18 @@ begin
     FillChannelList();
   end;
   NewFileOpened:= False;
+end;
+
+procedure TShowChannelForm.FindBoxChange(Sender: TObject);
+var n:integer;
+begin
+  n:= ChannelList.Items.IndexOf(FindBox.Text);
+  if n >= 0 then ChannelList.Selected[n]:= True;
+end;
+
+procedure TShowChannelForm.FindBoxClick(Sender: TObject);
+begin
+  if FindBox.Text = 'Find' then FindBox.Text:= '';
 end;
 
 procedure TShowChannelForm.FormCreate(Sender: TObject);

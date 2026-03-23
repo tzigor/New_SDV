@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Graphics, UserTypes, TASeries, TAGraph, LCLType,
   TAChartAxis, TATypes, TALegend, TAChartUtils, StrUtils, ChartUtils, Forms,
-  Controls, Dialogs, DateUtils, GraphUtil;
+  Controls, Dialogs, DateUtils, GraphUtil, Math;
 
 function AddLineSerie(AChart: TChart; AName: String): TLineSeries;
 procedure SetLineSeriesStyle();
@@ -39,6 +39,7 @@ procedure RemoveLineLabels(Serie: TLineSeries);
 function GetSerieName(Serie: TLineSeries): String;
 procedure SerieShiftTime(Serie : TLineSeries; Hrs, Mins, Secs: Integer);
 procedure DotMode(ModeOn: Boolean);
+procedure MedianFilter(Serie : TLineSeries; WindowSize: Integer);
 
 implementation
 uses Main;
@@ -393,6 +394,53 @@ begin
     end;
   end;
 end;
+
+procedure MedianFilter(Serie : TLineSeries; WindowSize: Integer);
+var
+  i, j, k, halfWindow: Integer;
+  window: array of Double;
+  temp: Double;
+begin
+  if Serie.Count = 0 then Exit;
+
+  halfWindow:= WindowSize div 2;
+  SetLength(window, WindowSize);
+
+  for i:= 0 to Serie.Count-1 do
+  begin
+    // Заполняем окно данными
+    k:= 0;
+    for j:= Max(0, i - halfWindow) to Min(Serie.Count-1, i + halfWindow) do
+    begin
+      window[k]:= Serie.GetYValue(j);
+      Inc(k);
+    end;
+
+    // Если окно неполное, дополняем крайними значениями
+    while k < WindowSize do
+    begin
+      if i < halfWindow then
+        window[k] := Serie.GetYValue(0)
+      else
+        window[k] := Serie.GetYValue(Serie.Count-1);
+      Inc(k);
+    end;
+
+    // Сортируем окно для нахождения медианы
+    for j := 0 to WindowSize - 2 do
+      for k := j + 1 to WindowSize - 1 do
+        if window[j] > window[k] then
+        begin
+          temp := window[j];
+          window[j] := window[k];
+          window[k] := temp;
+        end;
+
+    // Берем медиану
+    Serie.SetYValue(i, window[WindowSize div 2]);
+  end;
+end;
+
 
 end.
 

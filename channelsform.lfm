@@ -1,11 +1,11 @@
 object ShowChannelForm: TShowChannelForm
-  Left = 5065
-  Height = 1063
-  Top = -860
+  Left = 4758
+  Height = 1103
+  Top = -921
   Width = 582
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Channels'
-  ClientHeight = 1063
+  ClientHeight = 1103
   ClientWidth = 582
   Color = clWhite
   Constraints.MinHeight = 1059
@@ -20,7 +20,7 @@ object ShowChannelForm: TShowChannelForm
   object CloseList: TBitBtn
     Left = 458
     Height = 38
-    Top = 1016
+    Top = 1056
     Width = 112
     Anchors = [akRight, akBottom]
     Caption = 'Close'
@@ -30,7 +30,7 @@ object ShowChannelForm: TShowChannelForm
   object DrawBtn: TBitBtn
     Left = 12
     Height = 38
-    Top = 1016
+    Top = 1056
     Width = 100
     Anchors = [akLeft, akBottom]
     Caption = 'Draw'
@@ -145,10 +145,10 @@ object ShowChannelForm: TShowChannelForm
     AnchorSideRight.Control = Splitter1
     AnchorSideBottom.Control = Image1
     Left = 12
-    Height = 684
+    Height = 683
     Top = 324
     Width = 303
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Bottom = 8
     DragMode = dmAutomatic
     ExtendedSelect = False
@@ -163,10 +163,10 @@ object ShowChannelForm: TShowChannelForm
     AnchorSideLeft.Control = Splitter1
     AnchorSideBottom.Control = Image1
     Left = 324
-    Height = 684
+    Height = 683
     Top = 324
     Width = 242
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 9
     BorderSpacing.Bottom = 8
     DragMode = dmAutomatic
@@ -181,7 +181,7 @@ object ShowChannelForm: TShowChannelForm
   end
   object Splitter1: TSplitter
     Left = 315
-    Height = 676
+    Height = 716
     Top = 324
     Width = 9
     Align = alNone
@@ -202,7 +202,7 @@ object ShowChannelForm: TShowChannelForm
   object DrawGroupBtn: TButton
     Left = 120
     Height = 38
-    Top = 1016
+    Top = 1056
     Width = 112
     Anchors = [akLeft, akBottom]
     Caption = 'Draw group'
@@ -213,7 +213,7 @@ object ShowChannelForm: TShowChannelForm
     Left = 280
     Height = 38
     Hint = 'Save template'
-    Top = 1016
+    Top = 1056
     Width = 38
     Anchors = [akLeft, akBottom]
     ParentShowHint = False
@@ -253,7 +253,7 @@ object ShowChannelForm: TShowChannelForm
     Left = 328
     Height = 38
     Hint = 'Load template'
-    Top = 1016
+    Top = 1056
     Width = 38
     Anchors = [akLeft, akBottom]
     ParentShowHint = False
@@ -292,7 +292,7 @@ object ShowChannelForm: TShowChannelForm
     Left = 376
     Height = 38
     Hint = 'Import template'
-    Top = 1016
+    Top = 1056
     Width = 38
     Anchors = [akLeft, akBottom]
     ParentShowHint = False
@@ -353,16 +353,27 @@ object ShowChannelForm: TShowChannelForm
     Caption = 'BHP to PSI'
     TabOrder = 11
   end
+  object FindBox: TEdit
+    Left = 16
+    Height = 33
+    Top = 1016
+    Width = 308
+    Anchors = [akLeft, akBottom]
+    TabOrder = 12
+    Text = 'Find'
+    OnChange = FindBoxChange
+    OnClick = FindBoxClick
+  end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <    
       item
       end>
-    Left = 252
-    Top = 912
+    Left = 424
+    Top = 592
   end
   object SaveDialog1: TSaveDialog
     Filter = '*.csv'
-    Left = 408
-    Top = 912
+    Left = 424
+    Top = 680
   end
 end

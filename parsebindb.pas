@@ -193,10 +193,20 @@ begin
                 end;
               end;
         'F8': begin
+
                 Move(Bytes[DataOffset], F8, 8);
-                TffFrames.AddData(ChannelsList[i].Offset, F8);
-                if (F8 = -999.25) or (wSamples = 1) then IncDataOffset(8)
-                else IncDataOffset(8 * wSamples);
+                if i = 0 then begin  { if TIME channel }
+                   FullDateTime:= IncSecond(FullDateTime, Round((F8 - TimeShift)));
+                   TffFrames.AddRecord(FullDateTime, TffStructure.GetDataChannelSize, TffStructure.GetTFFDataChannels);
+                   IncDataOffset(8);
+                end
+                else begin
+                   TffFrames.AddDataDouble(ChannelsList[i].Offset, F8);
+                   if (F8 = -999.25) or (wSamples = 1) then IncDataOffset(8)
+                   else
+                     IncDataOffset(8 * wSamples);
+                end;
+
               end;
         'I1': begin
                 I1:= ReadCurrentByte;
@@ -239,7 +249,7 @@ begin
               end
       end;
    end;
-   if isEcoscope then IncDataOffset(1);
+   IncDataOffset(1);
 end;
 
 function BinDbParser(Tff_Ver: Byte): TFrameRecords;
@@ -303,6 +313,7 @@ begin
                     Inc(FrameCount);
                  end;
             'B': IncDataOffset(RecordLength);
+            'S': IncDataOffset(RecordLength);
          else ErrorCode:= WRONG_FILE_FORMAT;
          end;
      end;

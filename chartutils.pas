@@ -172,8 +172,8 @@ begin
      SetFastMode(ShowChannelForm.FastMode.Checked);
   end;
 
-  if FindPart('AR???F', Name) > 0 then isAplitude:= True;
-  if FindPart('PR???F', Name) > 0 then isPhaseShift:= True;
+  if (FindPart('AR???F', Name) > 0) And IsSIBR then isAplitude:= True;
+  if (FindPart('PR???F', Name) > 0) And IsSIBR then isPhaseShift:= True;
 
   if isAplitude Or isPhaseShift then begin
       numParam:= NameToInt(Name);
